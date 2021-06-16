@@ -1,0 +1,18 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-10 offset-1 d-flex">
+      <div class="mr-3">
+        <%= attachment_image_tag @product, :image, size: '250x180', format:'jpeg', fallback: 'sample.jpg' %>
+      </div>
+      <div>
+        <h5 class="font-weight-bold"><%= @product.name %></h5>
+        <div class="my-2"><%= @product.introduction %></div>
+        <div class="mt-5 mb-3">¥<%= @tax_price %><span class="small">(税込)</span></div>
+        <%= form_with model: @cart_products do |f| %>
+          <%= f.select :quantity, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], include_blank: "個数選択" %>
+          <%= f.submit 'カートに入れる', class: "btn btn-sm btn-success ml-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

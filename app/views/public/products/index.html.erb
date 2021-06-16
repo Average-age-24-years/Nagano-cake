@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-1">
+      <h4>商品一覧</h4>
+      <% @products.each do |product| %>
+        <div class="wrap">
+          <div>
+            <%= attachment_image_tag product, :image, size: '200x150', format:'jpeg', fallback: 'sample.jpg' %>
+            <div><%= product.name %></div>
+            <div>¥<%= product.price %></div>
+          </div>
+        </div>
+      <% end %>
+      <%= paginate @products %>
+    </div>
+  </div>
+</div>
