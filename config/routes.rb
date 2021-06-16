@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+
   namespace :public do
     resources :products, only: [:index, :show]
+    resources :customers, only: [:show, :withdraw_confirm, :edit, :update, :withdraw]
   end
   
   get 'homes/top'

@@ -1,0 +1,16 @@
+<h4>会員情報編集画面</h4>
+<%= form_with model:@customer, local:true do |f| %>
+<table class = "table table-borderless">
+ <tr><th></th><th></th></tr>
+ <tr><td>氏名</td><td><%= f.text_field :family_name, autofocus: true, placeholder: "名字" %><%= f.text_field :first_name, placeholder: "名前" %></td></tr>
+ <tr><td>フリガナ</td><td><%= f.text_field :family_kana %><%= f.text_field :first_kana %></td></tr>
+ <tr><td>郵便番号</td><td><%= f.text_field :post_code %></td></tr>
+ <tr><td>住所</td><td><%= f.text_field :address %></td></tr>
+ <tr><td>電話番号</td><td><%= f.text_field :phone_number %></td></tr>
+ <tr><td>メールアドレス</td><td><%= f.text_field :email %></td></tr>
+</table>
+
+<div><%= f.submit "編集内容を保存" %></div>
+<div><%= 退会する %></div>
+<% end %>
+
