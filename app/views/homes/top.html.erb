@@ -1,0 +1,12 @@
+<h1>Homes#top</h1>
+<p>Find me in app/views/homes/top.html.erb</p>
+ <% if customer_signed_in? %>
+      <li>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+      </li>
+ <% end %>
+ <% if admin_admin_signed_in? %>
+      <li>
+        <%= link_to "ログアウト", destroy_admin_admin_session_path, method: :delete %>
+      </li>
+ <% end%>

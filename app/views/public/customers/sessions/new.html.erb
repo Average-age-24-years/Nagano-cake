@@ -1,0 +1,23 @@
+<h2 class='mt-5'>ログイン</h2>
+<h4 class='mt-4'>会員の方はこちらからログイン</h4>
+<div class='text-center '>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <dl>
+      <div class="field mt-4">
+        <dt><%= f.label :メールアドレス %></dt>
+        <dd><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %></dd>
+      </div>
+    
+      <div class="field mt-4">
+        <dt><%= f.label :パスワード %></dt>
+        <dd><%= f.password_field :password, autocomplete: "current-password", size: 40 %></dd>
+      </div>
+    
+      <div class="actions mt-4">
+        <dd><%= f.submit "Log in", class: 'btn btn-info' %></dd>
+      </div>
+    </dl>
+  <% end %>
+  <h4 class='mt-5'>会員登録がお済みでない方</h4>
+  <p class='mt-4'><%= link_to "こちら", new_customer_registration_path %>から新規登録を行って下さい</p>
+</div>

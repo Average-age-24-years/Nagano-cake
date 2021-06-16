@@ -127,6 +127,7 @@ Devise.setup do |config|
 
   # Set up a pepper to generate the hashed password.
   # config.pepper = '4d0bac9147c6e7b641050ec58a1f67b80478ea024061a0defd8ea75a0ba42e74a90ebf71e2e63f41f0fea359d338a9a127f17114cb30a761f5b67f4a88ceb71e'
+  # config.pepper = 'f4ff22c0c842e2e2e178350503002f428ae8045516c69005cfed44bbf1645982f9c415d77b2a930445060c8dd763d0e1854a442849560588a8ce3abda0fda61a'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -244,7 +245,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).

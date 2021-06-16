@@ -96,11 +96,16 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.9.4)
+      devise (>= 4.7.1)
+    devise-i18n-views (0.3.7)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.1)
+    font-awesome-sass (5.15.1)
+      sassc (>= 1.11)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-accept (1.7.0)
@@ -288,6 +293,9 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  devise-i18n
+  devise-i18n-views
+  font-awesome-sass
   jbuilder (~> 2.5)
   jquery-rails
   kaminari (~> 1.2.1)
