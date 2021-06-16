@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-1">
+      <div class="d-flex">
+        <h4>商品一覧</h4>
+        <p>　(全<%= @products.count %>件)</p>
+      </div>
+      <% @products.each do |product| %>
+        <div class="d-flex flex-wrap">
+          <div>
+            <%= attachment_image_tag product, :image, size: '200x150', format:'jpeg', fallback: 'sample.jpg' %>
+            <div><%= product.name %></div>
+            <div>¥<%= product.price.to_s(:delimited) %></div>
+          </div>
+        </div>
+      <% end %>
+      <%= paginate @products %>
+    </div>
+  </div>
+</div>
