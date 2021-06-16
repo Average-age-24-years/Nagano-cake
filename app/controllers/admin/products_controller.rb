@@ -1,11 +1,12 @@
 class Admin::ProductsController < ApplicationController
-  
+
   def index
   end
 
   def new
+    @product = Product.new
   end
-  
+
   def create
   end
 
@@ -14,8 +15,8 @@ class Admin::ProductsController < ApplicationController
 
   def edit
   end
-  
+
   def update
   end
-  
+
 end
