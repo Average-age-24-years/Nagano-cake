@@ -1,3 +1,13 @@
+<% if customer_signed_in? %>
+      <li>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+      </li>
+ <% end %>
+ <% if admin_admin_signed_in? %>
+      <li>
+        <%= link_to "ログアウト", destroy_admin_admin_session_path, method: :delete %>
+      </li>
+ <% end%>
 
 <div class="position-relative p-3 p-md-5 mx-auto my-4 bg-light" style="width:600px; height:300px;">
 <h6 class="border border-dark py-3 mx-auto" style="width:500px; height:150px;">

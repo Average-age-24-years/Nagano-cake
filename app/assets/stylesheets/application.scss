@@ -17,4 +17,13 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  
+ dl dt{
+  width: 200px;
+  padding:10px 0;
+  float:left;
+  clear:both;
+}
 
+dl dd{
+  padding:10px 0;
+}
