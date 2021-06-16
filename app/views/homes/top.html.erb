@@ -1,6 +1,4 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
- <% if customer_signed_in? %>
+<% if customer_signed_in? %>
       <li>
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
@@ -10,3 +8,27 @@
         <%= link_to "ログアウト", destroy_admin_admin_session_path, method: :delete %>
       </li>
  <% end%>
+
+<div class="position-relative p-3 p-md-5 mx-auto my-4 bg-light" style="width:600px; height:300px;">
+<h6 class="border border-dark py-3 mx-auto" style="width:500px; height:150px;">
+  ようこそ、ながのCAKEへ！</br>
+  このサイトは、ケーキ販売のECサイトになります。</br>
+  会員ではない方も商品の閲覧はできますが、</br>
+  購入には会員登録が必要になります。</br>
+</h6>
+</div>
+<div class="mx-auto" style="width:80%;" >
+<h2>新着商品</h2>
+<div class="row">
+  <div class="d-flex flex-wrap">
+<% @products.each do |product| %>
+  <div>
+    <%= attachment_image_tag product, :image, size: '200x150', format:'jpeg', fallback: 'sample.jpg' %>
+     <div><%= product.name %></div>
+      <div>¥<%= product.price.to_s(:delimited) %></div>
+    </div>
+  </div>
+<% end %>
+</div>
+<p class="text-right m-1">すべての商品を見る＞</p>
+

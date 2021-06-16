@@ -16,4 +16,9 @@ Rails.application.routes.draw do
     }
   end 
   
+  namespace :public do
+    resources :products, only: [:index, :show]
+    resources :customers, only: [:show, :withdraw_confirm, :edit, :update, :withdraw]
+  end
+  
 end

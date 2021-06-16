@@ -1,0 +1,23 @@
+<h4 class="bg-seconary">マイページ</h4>
+<div class="row">
+<h4 class="col">登録情報</h4>
+<div class="col"><%= link_to "edit", edit_public_customer_path, class: "btn btn-success" %></div>
+</div>
+<table class="table table-bordered">
+ <tr>
+　<th>氏名</th><th><%= (customer.family_name) + (customer.first_name) %></th>
+　<th>カナ</th><th><%= (customer.family_kana) + (customer.first_kana) %></th>
+　<th>郵便番号</th><th><%= customer.post_code %></th>
+　<th>住所</th><th><%= customer.address %></th>
+　<th>電話番号</th><th><%= customer.phone_number %></th>
+　<th>メールアドレス</th><th><%= customer.email %></th>
+ </tr>
+</table>
+<div class="row">
+<h4 class="col">配送先</h4>
+<div class="col"><%= link_to "一覧画面", class: "btn btn-primary" %></div>
+</div>
+<div class="row">
+ <h4 clas="col">注文履歴</h4>
+ <div class="col"><%= link_to "一覧画面を見る", class: "btn btn-primary" %></div>
+</div>
