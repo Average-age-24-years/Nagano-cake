@@ -1,6 +1,6 @@
 class Admin::ProductsController < ApplicationController
 
-  # before_action :authenticate_customer!
+  # before_action :authenticate_admin!
 
   def index
     products = Product.order(created_at: :asc)
