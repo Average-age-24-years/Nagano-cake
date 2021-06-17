@@ -1,7 +1,11 @@
 class Admin::ProductsController < ApplicationController
 
+  # before_action :authenticate_customer!
+
   def index
-    @products = Product.page(params[:page]).reverse_order
+    products = Product.order(created_at: :asc)
+    @products = Kaminari.paginate_array(products).page(params[:page]).per(10)
+
   end
 
   def new
@@ -9,7 +13,13 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-
+    product = Product.new(product_params)
+    if product.save
+      redirect_to admin_product_path(product), notice: "商品を登録しました"
+    else
+      @product = Product.new
+      render :new
+    end
   end
 
   def show
@@ -23,6 +33,19 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
+    product = Product.find(params[:id])
+    if product.update(product_params)
+      redirect_to admin_product_path(product), notice: "商品情報を編集しました"
+    else
+      @product = Product.find(params[:id])
+      render :edit
+    end
+  end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :image, :introduction, :genre_id, :price, :is_active)
   end
 
 end
