@@ -15,4 +15,6 @@ class Customer < ApplicationRecord
   validates :address,          presence: true
   validates :telephone_number, presence: true
   validates :password,         presence: true
+  
+  has_many :distinations, dependent: :destroy
 end
