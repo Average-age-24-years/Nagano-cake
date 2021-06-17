@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   
   namespace :public do
     devise_for :customers, controllers: {
-    registrations: 'customers/registrations',
-    sessions: "customers/sessions",
-    passwords: 'customers/passwords'
+    registrations: 'public/customers/registrations',
+    sessions: "public/customers/sessions",
+    passwords: 'public/customers/passwords'
     }
     resources :products, only: [:index, :show]
     resources :customers, only: [:show, :withdraw_confirm, :edit, :update, :withdraw]
