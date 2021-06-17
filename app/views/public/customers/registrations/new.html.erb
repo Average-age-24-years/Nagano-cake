@@ -1,8 +1,7 @@
 <h2 class='mt-5'>新規会員登録</h2>
-  <form class="form-horizontal">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "public/customers/shared/error_messages", resource: resource %>
-        
+  <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
+    <%= render "public/customers/shared/error_messages", resource: resource %>
+      <form class="form-horizontal">
         <div class="form-group mt-5">
           <label class="col-md-2 control-label"><%= f.label :名前 %></label></br>
           <label class="col-md-2 control-label"><%= f.label:（性）%></label>
@@ -52,8 +51,7 @@
         <div class="actions">
           <div class="col-md-5"><%= f.submit "新規登録", class: 'btn btn-success' %></div>
         </div>
-  
-    <% end %>
-  </form>
-  <h4 class='mt-5'>すでに登録済みの方</h4>
-  <p class='mt-3'><%= link_to "こちら", new_customer_session_path %>からログインして下さい</p>
+    </form>
+  <% end %>
+<h4 class='mt-5'>すでに登録済みの方</h4>
+<p class='mt-3'><%= link_to "こちら", new_customer_session_path %>からログインして下さい</p>
