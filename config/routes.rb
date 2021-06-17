@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   devise_for :customers, controllers: {
     registrations: 'public/customers/registrations',
-    sessions: "public/customers/sessions",
+    sessions: 'public/customers/sessions',
     passwords: 'public/customers/passwords'
   }
   
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :products, only: [:index, :show]
     resources :customers, only: [:show, :withdraw_confirm, :edit, :update, :withdraw]
+    resources :distinations, only: [:index, :create, :edit, :update, :destroy]
   end
   
 end
