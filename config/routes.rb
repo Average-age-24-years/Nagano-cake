@@ -28,14 +28,12 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-<<<<<<< HEAD
     devise_for :customers, controllers: {
     registrations: 'public/customers/registrations',
     sessions: "public/customers/sessions",
     passwords: 'public/customers/passwords'
     }
-=======
->>>>>>> f8602a9e4ba2420843ccd8b14efab8cd9997fb0e
+
     resources :products, only: [:index, :show]
     resources :customers, only: [:show, :withdraw_confirm, :edit, :update, :withdraw]
     resources :distinations, only: [:index, :create, :edit, :update, :destroy]
