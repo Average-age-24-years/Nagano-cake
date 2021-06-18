@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'homes/about' => 'homes#about', as: 'about'
 
+
   devise_for :customers, controllers: {
     registrations: 'public/customers/registrations',
     sessions: 'public/customers/sessions',
@@ -28,7 +29,10 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+    get '/customer/confirm' => 'customers#withdraw_confirm', as: 'confirm_withdraw'
+    patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     resources :products, only: [:index, :show]
+
     resources :customers, only: [:show, :withdraw_confirm, :edit, :update, :withdraw]
     resources :distinations, only: [:index, :create, :edit, :update, :destroy]
     resources :cart_products, only: [:index]
@@ -36,6 +40,7 @@ Rails.application.routes.draw do
     patch 'cart_products/:id/:product_id' => 'cart_products#update', as: 'update_cart_products'
     delete 'cart_products/:id/:product_id' => 'cart_products#destroy', as: 'destroy_cart_products'
     delete 'cart_products' => 'cart_products#all_destroy', as: 'all_destroy'
+
   end
 
 end
