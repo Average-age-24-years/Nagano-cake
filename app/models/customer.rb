@@ -1,6 +1,7 @@
 class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -15,24 +16,27 @@ class Customer < ApplicationRecord
   validates :address,          presence: true
   validates :telephone_number, presence: true
 
+
   validates :password,         presence: true, on: :create
   
   has_many :distinations,  dependent: :destroy
   has_many :orders,        dependent: :destroy
-  
+  has_many :cart_products, dependent: :destroy
+
   # ユーザーの'is_deleted'をタイムスタンプで更新
-  def soft_delete  
-    update_attribute(:is_deleted, Time.current)  
+  def soft_delete
+    update_attribute(:is_deleted, Time.current)
   end
 
   # ユーザーのアカウントが有効であることを確認しています
-  def active_for_authentication?  
-    super && !is_deleted 
-  end  
+  def active_for_authentication?
+    super && !is_deleted
+  end
 
-  # 削除したユーザーにメッセージを追加します  
-  def inactive_message   
-    !is_deleted ? super : :"アカウントは削除されています" 
-  end 
-  
+  # 削除したユーザーにメッセージを追加します
+  def inactive_message
+    !is_deleted ? super : :"アカウントは削除されています"
+  end
+
+
 end
