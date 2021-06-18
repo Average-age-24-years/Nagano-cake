@@ -6,7 +6,8 @@
  退会する場合は、「退会する」をクリックしてください。
 </h4>
 <div class="row">
-<%= link_to "退会する", class: "btn btn-primary col my-3" %>
-<%= link_to "退会する", class: "btn btn-danger col my-3" %>
+<%= link_to "退会しない", class: "btn btn-primary" %>
+<%= link_to "退会する", public_withdraw_customer_path(current_customer), method: :patch %>
 </div>
+
 </div>

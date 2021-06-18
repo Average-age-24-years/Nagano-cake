@@ -1,6 +1,7 @@
 class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
@@ -15,4 +16,11 @@ class Customer < ApplicationRecord
   validates :address,          presence: true
   validates :telephone_number, presence: true
   validates :password,         presence: true
+  
+   
+   #enum is_deleted: {Available: true, Invalid: false} 
+
+    #def active_for_authentication?
+     #   super && (self.is_deleted === "Invalid")
+    #end
 end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'homes#top'
   get 'homes/about' => 'homes#about', as: 'about'
+
   
   devise_for :customers, controllers: {
     registrations: 'public/customers/registrations',
@@ -17,8 +18,12 @@ Rails.application.routes.draw do
   end 
   
   namespace :public do
+    get '/customer/confirm' => 'customers#withdraw_confirm', as: 'confirm_withdraw'
+    patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     resources :products, only: [:index, :show]
-    resources :customers, only: [:show, :withdraw_confirm, :edit, :update, :withdraw]
+    resources :customers, only: [:show, :edit, :update] do
+
+  end
   end
   
 end
