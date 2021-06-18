@@ -1,5 +1,7 @@
 class Admin::OrdersController < ApplicationController
 
+  before_action :authenticate_admin_admin!
+
   def index
     @orders = Order.page(params[:page]).reverse_order
   end
@@ -11,7 +13,13 @@ class Admin::OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update(order_params)
-    redirect_to admin_order_path(order), notice: "注文ステータスを#{order.order_status}に変更しました"
+
+    order_product = OrderProduct.where(order_id: order.id)
+    if order.order_status == "入金確認"
+      order_product.update(product_status: "製作待ち")
+    end
+
+    redirect_to admin_order_path(order)
   end
 
   private
