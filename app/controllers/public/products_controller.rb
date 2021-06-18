@@ -7,7 +7,7 @@ class Public::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    tax = 1.1
+    tax = 1.10
     @tax_price = @product.price * tax
     if !@product.is_active
       redirect_to public_products_path
