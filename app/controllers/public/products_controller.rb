@@ -12,6 +12,7 @@ class Public::ProductsController < ApplicationController
     if !@product.is_active
       redirect_to public_products_path
     end
+    @cart_product = CartProduct.new
   end
 
 end
