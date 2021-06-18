@@ -13,7 +13,8 @@
           <li type="button" class="btn btn-light mr-2"><%= link_to '注文履歴一覧' %></li>
           <li type="button" class="btn btn-light mr-2"><%= link_to 'ジャンル一覧', admin_genres_path %></li>
           <li type="button" class="btn btn-light mr-2"><%= link_to 'ログアウト', destroy_admin_admin_session_path, method: :delete %></li>
-          <% elsif customer_signed_in? %>
+          <% end %>
+          <% if customer_signed_in? %>
           <li type="button" class="btn btn-light mr-2"><%= link_to 'マイページ', public_customer_path(current_customer) %></li>
           <li type="button" class="btn btn-light mr-2"><%= link_to '商品一覧', public_products_path %></li>
           <li type="button" class="btn btn-light mr-2"><%= link_to 'カート', public_cart_products_path %></li>
