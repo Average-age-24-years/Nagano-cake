@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     }
     resources :products
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only:[:index, :show, :edit, :update]
   end
 
   namespace :public do
