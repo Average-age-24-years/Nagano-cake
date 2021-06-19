@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  
+   devise_for :customers, controllers: {
+    registrations: 'public/customers/registrations',
+    sessions: 'public/customers/sessions',
+    passwords: 'public/customers/passwords'
+  }
+
   get 'search/search'
   
   namespace :admin do
@@ -17,11 +22,6 @@ Rails.application.routes.draw do
   get 'homes/about' => 'homes#about', as: 'about'
 
 
-  devise_for :customers, controllers: {
-    registrations: 'public/customers/registrations',
-    sessions: 'public/customers/sessions',
-    passwords: 'public/customers/passwords'
-  }
 
   namespace :admin do
     devise_for :admins, controllers: {
