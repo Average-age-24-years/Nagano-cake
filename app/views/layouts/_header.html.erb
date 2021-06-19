@@ -1,33 +1,37 @@
 
   <nav class="navbar navbar-expand-lg navbar-light border-bottom">
-    <div class="container">
-      <a class="navbar-brand border border-dark text-center" style="width: 100px;" href="/"><span>LOGO</span></a>
+    <div class="container" style="height:100px">
+      <div class="navbar-brand pt-3">
+        <%= link_to root_path do %>
+          <%= image_tag "logo.png", :size => '330x60' %>
+        <% end %>
+      </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>    
+      </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if admin_admin_signed_in? %>
-          <li type="button" class="btn btn-light mr-2"><%= link_to '商品一覧',  admin_products_path %></li>
-          <li type="button" class="btn btn-light mr-2"><%= link_to '会員一覧', admin_customer_path(current_customer) %></li>
-          <li type="button" class="btn btn-light mr-2"><%= link_to '注文履歴一覧' %></li>
-          <li type="button" class="btn btn-light mr-2"><%= link_to 'ジャンル一覧', admin_genres_path %></li>
-          <li type="button" class="btn btn-light mr-2"><%= link_to 'ログアウト', destroy_admin_admin_session_path, method: :delete %></li>
-          <% end %>
-          <% if customer_signed_in? %>
-          <li type="button" class="btn btn-light mr-2"><%= link_to 'マイページ', public_customer_path(current_customer) %></li>
-          <li type="button" class="btn btn-light mr-2"><%= link_to '商品一覧', public_products_path %></li>
-          <li type="button" class="btn btn-light mr-2"><%= link_to 'カート', public_cart_products_path %></li>
-          <li type="button" class="btn btn-light mr-2"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
+          <li type="button" class="mr-4"><%= link_to '商品一覧',  admin_products_path, class: "nav-link text-dark" %></li>
+          <li type="button" class="mr-4"><%= link_to '会員一覧', admin_customer_path(current_customer), class: "nav-link text-dark" %></li>
+          <li type="button" class="mr-4"><%= link_to '注文履歴一覧', admin_orders_path, class: "nav-link text-dark" %></li>
+          <li type="button" class="mr-4"><%= link_to 'ジャンル一覧', admin_genres_path, class: "nav-link text-dark" %></li>
+          <li type="button" class="mr-4"><%= link_to 'ログアウト', destroy_admin_admin_session_path, class: "nav-link text-dark", method: :delete %></li>
+          <% elsif customer_signed_in? %>
+
+          <li type="button" class="mr-4"><%= link_to 'MY PAGE', public_customer_path(current_customer), class: "nav-link text-dark" %></li>
+          <li type="button" class="mr-4"><%= link_to 'PRODUCTS', public_products_path, class: "nav-link text-dark" %></li>
+          <li type="button" class="mr-4"><%= link_to 'MY CART', public_cart_products_path, class: "nav-link text-dark" %></li>
+          <li type="button" class="mr-4"><%= link_to 'LOG OUT', destroy_customer_session_path, class: "nav-link text-dark", method: :delete %></li>
           <% else %>
-          <li type="button" class="btn btn-light mr-2"><%= link_to 'About', about_path %></li>
-          <li type="button" class="btn btn-light mr-2"><%= link_to '商品一覧', public_products_path %></li>
-          <li type="button" class="btn btn-light mr-2"><%= link_to '新規登録', new_customer_registration_path %></li>
-          <li type="button" class="btn btn-light mr-2"><%= link_to 'ログイン', new_customer_session_path %></li>
+          <li type="button" class="mr-4"><%= link_to 'ABOUT', about_path, class: "nav-link text-dark" %></li>
+          <li type="button" class="mr-4"><%= link_to 'PRODUCTS', public_products_path, class: "nav-link text-dark" %></li>
+          <li type="button" class="mr-4"><%= link_to 'SIGN UP', new_customer_registration_path, class: "nav-link text-dark" %></li>
+          <li type="button" class="mr-4"><%= link_to 'LOG IN', new_customer_session_path, class: "nav-link text-dark" %></li>
           <% end %>
         </ul>
       </div>
     </div>
     <!--<= render 'header_search' %>-->
   </nav>
-  
+
