@@ -84,18 +84,18 @@ ActiveRecord::Schema.define(version: 2021_06_18_053917) do
     t.string "name", null: false
     t.integer "shipping", null: false
     t.integer "total_price", null: false
-    t.integer "payment", default: 0, null: false
-    t.integer "order_status", default: 0, null: false
+    t.integer "payment", null: false
+    t.integer "order_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "genre_id", null: false
-    t.string "name", null: false
-    t.string "image_id", null: false
-    t.text "introduction", null: false
-    t.integer "price", null: false
+    t.integer "genre_id"
+    t.string "name"
+    t.string "image_id"
+    t.text "introduction"
+    t.integer "price"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

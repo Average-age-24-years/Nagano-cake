@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  
+  get 'search/search'
+  
   namespace :admin do
     get 'orders/index'
     get 'orders/show'
@@ -38,7 +40,6 @@ Rails.application.routes.draw do
     get '/customer/confirm' => 'customers#withdraw_confirm', as: 'confirm_withdraw'
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
     resources :products, only: [:index, :show]
-
     resources :customers, only: [:show, :withdraw_confirm, :edit, :update, :withdraw]
     resources :distinations, only: [:index, :create, :edit, :update, :destroy]
     resources :cart_products, only: [:index]
@@ -46,7 +47,6 @@ Rails.application.routes.draw do
     patch 'cart_products/:id/:product_id' => 'cart_products#update', as: 'update_cart_products'
     delete 'cart_products/:id/:product_id' => 'cart_products#destroy', as: 'destroy_cart_products'
     delete 'cart_products' => 'cart_products#all_destroy', as: 'all_destroy'
-
   end
 
 end
