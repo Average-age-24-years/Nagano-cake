@@ -1,3 +1,52 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.slide1 {
+  background-image: url(slide1.png);
+}
+.slide2 {
+  background-image: url(slide2.png);
+}
+.slide3 {
+  background-image: url(slide3.png);
+}
+.slide4 {
+  background-image: url(slide4.png);
+}
+#container{
+  height: 500px;
+}
+
+header, h1 {
+  font-family: 'Quicksand','小塚ゴシック Pro R','Kozuka Gothic Pro Regular',"Noto Sans Japanese", "游ゴシック体", "Yu Gothic", YuGothic, "メイリオ", "Meiryo", "游ゴシック","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
+}
+
+.nav, h1 {
+  letter-spacing: 0.2em;
+  color: #666666;
+}
+
+h1 {
+  display: inline-block;
+  position: relative;
+}
+
+h1:before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -20px; /*下線の上下位置調整*/
+  display: inline-block;
+  width: 100px; /*下線の幅*/
+  height: 3px; /*下線の太さ*/
+  -moz-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translate(-50%); /*位置調整*/
+  background-color: #666666; /*下線の色*/
+}
+
+.bg-gray {
+  margin-top: 50px;
+}
