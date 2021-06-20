@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   namespace :admin do
     get 'orders/index'
     get 'orders/show'
@@ -9,6 +7,7 @@ Rails.application.routes.draw do
   end
   namespace :public do
     get 'cart_products/index'
+    get '/search', to: 'search#search'
   end
   namespace :admin do
     get 'genres/index'
