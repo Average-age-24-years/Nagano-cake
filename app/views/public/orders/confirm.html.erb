@@ -1,0 +1,38 @@
+<h2 class='mt-5'>注文情報確認</h2>
+<div class="col-7">
+  <table class="table table-bordered mt-5">
+    <thead class="thead-light">
+      <tr><th>商品名</th><th>単価(税込)</th><th>数量</th><th>小計</th></tr>
+    </thead>
+      <% @cart_products.each do |p| %>
+        <tbody>
+          <tr>
+            <td><%= attachment_image_tag p.product, :image, size: '50x50', format:'jpeg', fallback: 'sample.jpg' %><%= p.product.name %></td>
+            <td><%= p.product.price  %></td>
+            <td><%= p.quantity  %></td>
+            <td><%= (p.product.price * p.quantity * 1.1).round  %>
+          </tr>
+        </tbody>
+      <% end %>
+  </table>
+</div>
+<div class="col-3">
+  <table class="table table-bordered mt-5">
+    <thead class="thead-light">
+      <tr><th>送料</th><th>商品合計</th><th>請求金額</th>
+    </thead>
+        <tbody>
+          <tr>
+            <td><%= @shipping  %></td>
+            <td><%= @total_price %></td>
+            <td><%= @billing_amount %></td>
+          </tr>
+        </tbody>
+  </table>
+</div>
+
+<div class='mt-4 font-weight-bold'>支払い方法</h4></div>
+<div class='mt-2'><%=  session[:payment] %></div>
+<div class='mt-4 font-weight-bold'>お届け先</div>
+<div class='mt-2'><%=  session[:address] %></div>
+<div class="mt-4"><%= link_to "注文を確定する",  public_orders_create_order_path, method: :post, class:"btn btn-success" %></div>

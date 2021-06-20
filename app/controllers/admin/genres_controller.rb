@@ -1,6 +1,4 @@
 class Admin::GenresController < ApplicationController
-  
-　before_action :authenticate_admin_admin!
 
   before_action :authenticate_admin_admin!
 
