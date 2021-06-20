@@ -18,6 +18,9 @@
         <%= content_tag :div, message, class: :"alert alert-success" %>
       <% end %>
     <% end %>
+    <% if customer_signed_in? %>
+      <%= render 'layouts/search' %>
+    <% end %>
 
     <%= yield %>
 
