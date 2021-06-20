@@ -19,10 +19,10 @@ class Customer < ApplicationRecord
 
   validates :password,         presence: true, on: :create
   
-  has_many :distinations,  dependent: :destroy
-  has_many :orders,        dependent: :destroy
-  has_many :cart_products, dependent: :destroy
-
+  has_many :cart_products,  dependent: :destroy
+  has_many :distinations,   dependent: :destroy
+  has_many :orders,         dependent: :destroy
+  
   # ユーザーの'is_deleted'をタイムスタンプで更新
   def soft_delete
     update_attribute(:is_deleted, Time.current)
