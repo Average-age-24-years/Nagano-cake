@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-
+  
+  get 'search/search'
+  
+  namespace :admin do
+    get 'orders/index'
+    get 'orders/show'
+  end
   namespace :public do
     get 'cart_products/index'
   end
@@ -10,6 +16,7 @@ Rails.application.routes.draw do
   
   root to: 'homes#top'
   get      'homes/about' => 'homes#about', as: 'about'
+
 
   devise_for :customers, controllers: {
     registrations: 'public/customers/registrations',
@@ -26,14 +33,17 @@ Rails.application.routes.draw do
     resources :products
     resources :genres,    only:[:index, :create, :edit, :update]
     resources :customers, only:[:index, :show, :edit, :update]
-    resources :orders,    only:[:index, :show, :update]
+    resources :orders,         only:[:index, :show, :update]
+    resources :order_products, only: [:update]
   end
 
   namespace :public do
-    get       'orders/confirm'                => 'orders#confirm',            as: 'orders_confirm'
-    get       'orders/thanks'                 => 'orders#thanks',             as: 'orders_thanks'
-    post      'orders/new_distination'        => 'orders#new_distination',    as: 'orders_new_distination'
-    post      'orders/create_order'           => 'orders#create_order',       as: 'orders_create_order'
+    get       '/customer/confirm'             => 'customers#withdraw_confirm', as: 'confirm_withdraw'
+    patch     '/customers/withdraw'           => 'customers#withdraw',         as: 'withdraw_customer'
+    get       'orders/confirm'                => 'orders#confirm',             as: 'orders_confirm'
+    get       'orders/thanks'                 => 'orders#thanks',              as: 'orders_thanks'
+    post      'orders/new_distination'        => 'orders#new_distination',     as: 'orders_new_distination'
+    post      'orders/create_order'           => 'orders#create_order',        as: 'orders_create_order'
     resources :products,      only: [:index, :show]
     resources :customers,     only: [:show, :withdraw_confirm, :edit, :update, :withdraw]
     resources :distinations,  only: [:index, :create, :edit, :update, :destroy]

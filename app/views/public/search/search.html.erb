@@ -1,0 +1,62 @@
+<div class="container">
+ <div class="col-xl-12">
+  <% if @moel == "customer" %>
+  <h2>Customer search for '<%= @value %>'</h2>
+  <table class="table">
+    <thead>
+     <tr>
+      <th></th>
+      <th>会員</th>
+      <th>値段</th>
+      <th>商品紹介</th>
+     </tr>
+    </thead>
+   <% @datas.each do |customer| %>
+    <tbody>
+     <tr>
+      <th>
+       <%= attachment_image_tag(customer, :image, :fill, 40, 40, fallback: "sample.jpg", size:'40x40') %>
+      </th>
+      <th>
+       <%= customer.last_name %>　<%= customer.first_name %>
+      </th>
+      <th>
+       <%= product.price %>
+      </th>
+      <th>
+       <%= product.introduction %>
+      </th>
+     </tr>
+    </tbody>
+     <% end %>
+    </table>
+    <% elsif @model == "product" %>
+    <h2>Products search for '<%= @value %>'</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>商品</th>
+                <th>値段</th>
+                <th>商品紹介</th>
+            </tr>
+        </thead>
+        <% @datas.each do |product| %>
+        <tbody>
+            <tr>
+                <th>
+                    <%= attachment_image_tag(customer, :image, :fill, 40, 40, fallback: "sample.jpg", size:'40x40') %>
+                </th>
+                <th>
+                    <%= product.price %>
+                </th>
+                <th>
+                    <%= product.introduction %>
+                </th>
+            </tr>
+        </tbody>
+        <% end %>
+    <% end %>
+  </table>
+ </div>
+</div>
