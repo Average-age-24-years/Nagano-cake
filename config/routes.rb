@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'genres/index'
     get 'genres/edit'
   end
-  
+
   root to: 'homes#top'
   get      'homes/about' => 'homes#about', as: 'about'
 
@@ -48,7 +48,8 @@ Rails.application.routes.draw do
     resources :customers,     only: [:show, :withdraw_confirm, :edit, :update, :withdraw]
     resources :distinations,  only: [:index, :create, :edit, :update, :destroy]
     resources :cart_products, only: [:index]
-    resources :orders,        only: [:new, :create]
+    resources :orders,        only: [:new, :create, :index, :show]
+
     post      'cart_products'                 => 'cart_products#create',      as: 'add_cart_products'
     patch     'cart_products/:id/:product_id' => 'cart_products#update',      as: 'update_cart_products'
     delete    'cart_products/:id/:product_id' => 'cart_products#destroy',     as: 'destroy_cart_products'
