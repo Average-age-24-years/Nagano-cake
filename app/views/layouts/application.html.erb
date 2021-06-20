@@ -7,8 +7,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <%= render 'layouts/header' %>
+
   <body>
+    <%= render 'layouts/header' %>
+
     <% flash.each do |message_type, message| %>
       <% if message_type == "alert" %>
         <%= content_tag :div, message, class: :"alert alert-danger" %>
@@ -22,6 +24,6 @@
 
     <%= yield %>
 
+    <%= render 'layouts/footer' %>
   </body>
-  <%= render 'layouts/footer' %>
 </html>
