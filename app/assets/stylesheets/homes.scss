@@ -50,3 +50,18 @@ h1:before {
 .bg-gray {
   margin-top: 50px;
 }
+
+.about {
+  background-image: url(about.png);
+  background-size:cover;
+  background-position: right;
+ 
+  
+  height: 300px;
+}
+
+#about-image {
+  height: 250px;
+  width: 500px;
+  margin: 0 auto;
+}

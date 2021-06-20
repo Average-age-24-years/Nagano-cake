@@ -4,5 +4,6 @@ class HomesController < ApplicationController
   end
 
   def about
+    @products = Product.all
   end
 end

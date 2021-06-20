@@ -7,10 +7,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <%= render 'layouts/header' %>
   <body>
-    <%= render 'layouts/header' %>
-
     <% flash.each do |message_type, message| %>
       <% if message_type == "alert" %>
         <%= content_tag :div, message, class: :"alert alert-danger" %>
@@ -20,21 +18,12 @@
     <% end %>
 
     <% if admin_admin_signed_in? %>
-      <%= render 'layouts/search' %>
+      <%= render 'layouts/admin_search' %>
     <% elsif customer_signed_in? %>
-  <div class="container">
-  <div class="search-form text-right">
-  <%= form_with url: public_search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :content %>
-    <%= f.select :model, options_for_select({ "Genre" => "genre", "Product" => "product" }) %>
-    <%= f.submit '検索' %>
-  <% end %>
-</div>
-</div>
+      <%= render 'layouts/customer_search' %>
     <% end %>
-
     <%= yield %>
 
-    <%= render 'layouts/footer' %>
   </body>
+  <%= render 'layouts/footer' %>
 </html>
