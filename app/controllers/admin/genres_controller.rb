@@ -1,9 +1,4 @@
 class Admin::GenresController < ApplicationController
-<<<<<<< HEAD
-  before_action :authenticate_admin_admin!
-=======
->>>>>>> origin/develop
-
   before_action :authenticate_admin_admin!
 
   def index

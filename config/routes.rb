@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   
-  get 'search/search'
+  
   
   namespace :admin do
     get 'orders/index'
     get 'orders/show'
+    get '/search', to: 'search#search'
   end
   namespace :public do
     get 'cart_products/index'
