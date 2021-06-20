@@ -3,10 +3,6 @@ class Public::OrdersController < ApplicationController
   before_action :customer
   before_action :customer_address, only: [:new, :create]
 
-  def index
-    @orders = Order.page(params[:page]).reverse_order
-  end
-
   def new
     @order = Order.new
     @new_distination = Distination.new
@@ -59,6 +55,14 @@ class Public::OrdersController < ApplicationController
   # end
 
   def thanks
+  end
+
+  def index
+    @orders = Order.page(params[:page]).reverse_order
+  end
+
+  def show
+    @order = Order.find(params[:id])
   end
 
   private
