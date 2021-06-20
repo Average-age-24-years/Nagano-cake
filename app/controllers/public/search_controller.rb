@@ -10,6 +10,6 @@ class Public::SearchController < ApplicationController
 		else
 			@records = Product.search_for(@content, @method)
 		end
+		#@genres = Genre.all
 	end
-
 end
