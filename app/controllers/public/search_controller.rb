@@ -7,9 +7,9 @@ class Public::SearchController < ApplicationController
 			@records = Genre.search_for(@content, @method)
 			@record = Product.search_for(@content, @method)
 			@active_products = Product.where(is_active: true)
+			@records = Product.where(genre_id: params[:genre_id], is_active: true)
 		else
 			@records = Product.search_for(@content, @method)
 		end
-		#@genres = Genre.all
 	end
 end
