@@ -20,6 +20,8 @@ class Public::CartProductsController < ApplicationController
 
 		if @cart_product.save
 		  redirect_to public_cart_products_path, notice: "カートに商品を追加しました"
+		else
+      redirect_to request.referrer, alert: "個数を選択してください"
 		end
   end
 

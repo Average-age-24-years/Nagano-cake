@@ -1,8 +1,8 @@
 class Public::OrdersController < ApplicationController
-  
+
   before_action :customer
   before_action :customer_address, only: [:new, :create]
-  
+
   def new
     @order = Order.new
     @new_distination = Distination.new
@@ -24,16 +24,12 @@ class Public::OrdersController < ApplicationController
     elsif order_params[:radio] == "radio3"
       @order.post_code = order_params[:post_code]
       @order.address   = order_params[:address]
-      @order.name      = order_params[:name]
+      @order.name      = order_params[:name] 
       new_distination
     else
       render new_public_order_path
     end
-    @cart_products  = @customer.cart_products.all
-    @shipping       = shipping
-    @total_price    = subtotal_price
-    @billing_amount = subtotal_price + shipping
-  end 
+  end
   
   def create 
     order             = Order.new
@@ -53,35 +49,44 @@ class Public::OrdersController < ApplicationController
   end 
   
   def thanks
-  end 
-  
+  end
+
+  def index
+    orders = current_customer.orders.all
+    @orders = Kaminari.paginate_array(orders).page(params[:page]).per(5)
+  end
+
+  def show
+    @order = Order.find(params[:id])
+  end
+
   private
-  
+
   def customer
     @customer = current_customer
-  end 
-  
+  end
+
   def shipping
     shipping = 800
   end
-  
+
   def customer_address
     postal_code = @customer.postal_code
     address     = @customer.address
     name        = @customer.last_name + @customer.first_name
     @customer_address = "〒#{postal_code}　#{address}　#{name}"
-  end 
-  
+  end
+
   def subtotal_price
 	  @cart_products = current_customer.cart_products.all
 	  total_price = 0
     @cart_products.each do |cart_product|
       product_price = ((cart_product.product.price * 1.10) * cart_product.quantity).round
       total_price += product_price
-    end 
+    end
     total_price
-  end 
-  
+  end
+
   def new_distination
     distination = Distination.new
     distination.customer_id = current_customer.id
@@ -89,10 +94,10 @@ class Public::OrdersController < ApplicationController
     distination.address     = order_params[:address]
     distination.name        = order_params[:name]
     flash[:notice] = "新しい配送先を追加しました" if distination.save
-  end 
-  
+  end
+
   def order_params
     params.require(:order).permit(:radio, :payment, :post_code, :address, :name)
   end
-	
+
 end

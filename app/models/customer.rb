@@ -37,6 +37,10 @@ class Customer < ApplicationRecord
   def inactive_message
     !is_deleted ? super : :"アカウントは削除されています"
   end
+  
+  def self.search_for(content, method)
+      Customer.where('last_name LIKE ?', '%'+content+'%')
+  end
 
 
 end

@@ -17,6 +17,11 @@
       <% end %>
     <% end %>
 
+    <% if admin_admin_signed_in? %>
+      <%= render 'layouts/admin_search' %>
+    <% elsif customer_signed_in? %>
+      <%= render 'layouts/customer_search' %>
+    <% end %>
     <%= yield %>
 
   </body>

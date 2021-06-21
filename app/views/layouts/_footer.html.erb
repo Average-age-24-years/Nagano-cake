@@ -1,6 +1,14 @@
 <footer>
   <div class='container mt-5'>
-    <div class='row border-top' style="height:70px;">
-    </div>
+    <% unless request.path.include?("admin") %>
+      <h5 class="p-2 pl-4 border-bottom">お問い合わせ</h5>
+      <p class="p-2 pl-4">
+        ながのCake<br>
+        〒123-0023 東京都新宿区xxxxx<br>
+        TEL:045-264-4076<br>
+        MAIL:info@nagano_cake.jp
+      </p>
+    <% end %>
+      <div class="d-table mx-auto my-3">CopyRight 2021 nagano_cake</div>
   </div>
 </footer>

@@ -41,7 +41,7 @@
         </table>
 
         <div class="d-flex">
-          <div><%= link_to "買い物を続ける", root_path, class: "btn btn-sm btn-primary mt-2 ml-5" %></div>
+          <div><%= link_to "買い物を続ける", root_path, data: {"turbolinks" => false}, class: "btn btn-sm btn-primary mt-2 ml-5" %></div>
           <table class="table table-bordered col-3 ml-auto">
             <tbody>
               <tr>
@@ -54,7 +54,7 @@
         </div>
 
         <div class="text-center mt-3">
-          <%= link_to "情報入力に進む", root_path, class: "btn btn-success" %>
+          <%= link_to "情報入力に進む", public_orders_confirm_path, class: "btn btn-success" %>
         </div>
       <% else %>
         <h3>まだ商品はありません</h3>

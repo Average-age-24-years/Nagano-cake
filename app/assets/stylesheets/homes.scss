@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+header, h1 {
+  font-family: 'Quicksand','小塚ゴシック Pro R','Kozuka Gothic Pro Regular',"Noto Sans Japanese", "游ゴシック体", "Yu Gothic", YuGothic, "メイリオ", "Meiryo", "游ゴシック","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
+}
+
+.nav, h1 {
+  letter-spacing: 0.2em;
+  color: #666666;
+}
+
 .slide1 {
   background-image: url(slide1.png);
 }
@@ -14,17 +23,9 @@
 .slide4 {
   background-image: url(slide4.png);
 }
-#container{
+
+#container {
   height: 500px;
-}
-
-header, h1 {
-  font-family: 'Quicksand','小塚ゴシック Pro R','Kozuka Gothic Pro Regular',"Noto Sans Japanese", "游ゴシック体", "Yu Gothic", YuGothic, "メイリオ", "Meiryo", "游ゴシック","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
-}
-
-.nav, h1 {
-  letter-spacing: 0.2em;
-  color: #666666;
 }
 
 h1 {
@@ -49,4 +50,19 @@ h1:before {
 
 .bg-gray {
   margin-top: 50px;
+}
+
+.about {
+  background-image: url(about.png);
+  background-size:cover;
+  background-position: right;
+
+
+  height: 300px;
+}
+
+#about-image {
+  height: 250px;
+  width: 500px;
+  margin: 0 auto;
 }
