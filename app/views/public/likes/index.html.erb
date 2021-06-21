@@ -1,37 +1,43 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 offset-1">
-      <div class="d-flex my-4">
-        <h4>商品一覧</h4>
-        <p>　(全<%= @products.count %>件)</p>
-      </div>
-      <div class="d-flex">
-        <% @products.each do |product| %>
-          <div class="mr-4">
-            <%= link_to public_product_path(product) do %>
-              <%= attachment_image_tag product.product, :image, size: '200x150', format:'jpeg', fallback: 'sample.jpg' %>
-            <% end %>
-            <div class="my-2"><%= link_to "#{product.product.name}", public_product_path(product) %></div>
-            <div class="mb-2">¥<%= product.product.price.to_s(:delimited) %></div>
+      <% if current_customer.likes.exists? %>
 
-            <% if product.product.liked_by?(current_customer) %>
-              <div>
-                <%= link_to public_product_likes_path(product.product), method: :delete do %>
-                  <span class="btn btn-secondary btn-block fas fa-heart">お気に入り登録解除</span>
-                <% end %>
-              </div>
-            <% else %>
-              <div>
-                <%= link_to public_product_likes_path(product.product), method: :post do %>
-                  <span class="btn btn-outline-secondary btn-block far fa-heart">お気に入りに登録</span>
-                <% end %>
-              </div>
-            <% end %>
+        <div class="d-flex my-4">
+          <h4>お気に入り商品一覧</h4>
+          <p>　(全<%= @products.count %>件)</p>
+        </div>
+        <div class="d-flex">
+          <% @products.each do |product| %>
+            <div class="mr-4">
+              <%= link_to public_product_path(product) do %>
+                <%= attachment_image_tag product.product, :image, size: '200x150', format:'jpeg', fallback: 'sample.jpg' %>
+              <% end %>
+              <div class="my-2"><%= link_to "#{product.product.name}", public_product_path(product) %></div>
+              <div class="mb-2">¥<%= product.product.price.to_s(:delimited) %></div>
 
-          </div>
-        <% end %>
-      </div>
-      <%= paginate @products %>
+              <% if product.product.liked_by?(current_customer) %>
+                <div>
+                  <%= link_to public_product_likes_path(product.product), method: :delete do %>
+                    <span class="btn btn-secondary btn-block fas fa-heart">お気に入り登録解除</span>
+                  <% end %>
+                </div>
+              <% else %>
+                <div>
+                  <%= link_to public_product_likes_path(product.product), method: :post do %>
+                    <span class="btn btn-outline-secondary btn-block far fa-heart">お気に入りに登録</span>
+                  <% end %>
+                </div>
+              <% end %>
+
+            </div>
+          <% end %>
+        </div>
+        <%= paginate @products %>
+
+      <% else %>
+        <h2 class="my-5">お気に入り商品はありません</h2>
+      <% end %>
     </div>
   </div>
 </div>
