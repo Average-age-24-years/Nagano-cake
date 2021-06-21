@@ -7,53 +7,47 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @new_distination = Distination.new
     @distinations    = @customer.distinations.all
-    @distination     = []
-    @distinations.each do |d|
-      @distination << "#{d.postal_code}  #{d.address}  #{d.name}"
-    end
-  end
-
-
-
-  def create
-    session[:payment] = order_params[:payment]
-    if    order_params[:radio] == "radio1"
-      session[:address] = @customer_address
-      redirect_to public_orders_confirm_path
+  end 
+  
+  def confirm
+    @order = Order.new
+    @order.payment   = order_params[:payment]
+    if order_params[:radio]    == "radio1"
+      @order.post_code = @customer.postal_code
+      @order.address   = @customer.address
+      @order.name      = @customer.last_name + @customer.first_name
     elsif order_params[:radio] == "radio2"
-      session[:address] = order_params[:chose_address]
-      redirect_to public_orders_confirm_path
+      @distination = Distination.find(params[:order][:id])
+      @order.post_code = @distination.postal_code
+      @order.address   = @distination.address
+      @order.name      = @distination.name
     elsif order_params[:radio] == "radio3"
-      postal_code       = order_params[:postal_code]
-      address           = order_params[:address]
-      name              = order_params[:name]
-      session[:address] = "〒#{postal_code}　#{address}　#{name}"
+      @order.post_code = order_params[:post_code]
+      @order.address   = order_params[:address]
+      @order.name      = order_params[:name] 
       new_distination
-      redirect_to public_orders_confirm_path
     else
       render new_public_order_path
     end
   end
-
-  def confirm
-    @cart_products  = @customer.cart_products.all
-    @shipping       = shipping
-    @total_price    = subtotal_price
-    @billing_amount = subtotal_price + shipping
-  end
-
-  # def create_order
-  #   order.customer_id = @customer.id
-  #   order.shipping    = shipping
-  #   order.total_price = subtotal_price + shipping
-  #   payment
-  #   if order.save
-  #     redirect_to public_orders_thanks_path
-  #   else
-  #     render :new
-  #   end
-  # end
-
+  
+  def create 
+    order             = Order.new
+    order.customer_id = @customer.id
+    order.shipping    = shipping
+    order.total_price = subtotal_price + shipping
+    order.payment     = order_params[:payment]
+    order.post_code   = order_params[:post_code]
+    order.address     = order_params[:name]
+    order.name        = order_params[:name]
+    if order.save
+      @customer.cart_products.destroy_all
+      redirect_to public_orders_thanks_path
+    else
+      render :confirm
+    end
+  end 
+  
   def thanks
   end
 
@@ -96,14 +90,14 @@ class Public::OrdersController < ApplicationController
   def new_distination
     distination = Distination.new
     distination.customer_id = current_customer.id
-    distination.postal_code = order_params[:postal_code]
+    distination.postal_code = order_params[:post_code]
     distination.address     = order_params[:address]
     distination.name        = order_params[:name]
     flash[:notice] = "新しい配送先を追加しました" if distination.save
   end
 
   def order_params
-    params.require(:order).permit(:payment, :radio, :chose_address, :postal_code, :address, :name)
+    params.require(:order).permit(:radio, :payment, :post_code, :address, :name)
   end
 
 end
