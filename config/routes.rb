@@ -31,8 +31,8 @@ Rails.application.routes.draw do
       passwords:     'admin/admins/passwords'
     }
     resources :products
-    resources :genres,    only:[:index, :create, :edit, :update]
-    resources :customers, only:[:index, :show, :edit, :update]
+    resources :genres,         only:[:index, :create, :edit, :update]
+    resources :customers,      only:[:index, :show, :edit, :update]
     resources :orders,         only:[:index, :show, :update]
     resources :order_products, only: [:update]
   end
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     resources :customers,     only: [:show, :withdraw_confirm, :edit, :update, :withdraw] do
       resources :likes,       only: [:index]
     end
+
     resources :distinations,  only: [:index, :create, :edit, :update, :destroy]
     resources :cart_products, only: [:index]
     resources :orders,        only: [:new, :create, :index, :show]
