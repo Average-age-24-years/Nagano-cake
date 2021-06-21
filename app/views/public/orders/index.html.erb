@@ -17,13 +17,13 @@
           <tbody>
             <tr>
               <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-              <td class="small">
+              <td>
                 〒<%= order.post_code %><br>
                 <%= order.address %><br>
                 <%= order.customer.last_name + order.customer.first_name %>
               </td>
               <% order.order_products.each do |order_product| %>
-                <td class="small"><%= order_product.product.name %><br></td>
+                <td><%= order_product.product.name %><br></td>
               <% end %>
               <td><%= order.total_price %></td>
               <td><%= order.order_status %></td>

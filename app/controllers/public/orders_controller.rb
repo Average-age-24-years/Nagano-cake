@@ -58,7 +58,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.page(params[:page]).reverse_order
+    orders = current_customer.orders.all
+    @orders = Kaminari.paginate_array(orders).page(params[:page]).per(5)
   end
 
   def show
