@@ -42,8 +42,15 @@ Rails.application.routes.draw do
     patch     '/customers/withdraw'           => 'customers#withdraw',         as: 'withdraw_customer'
     get       'orders/confirm'                => 'orders#confirm',             as: 'orders_confirm'
     get       'orders/thanks'                 => 'orders#thanks',              as: 'orders_thanks'
-    resources :products,      only: [:index, :show]
-    resources :customers,     only: [:show, :withdraw_confirm, :edit, :update, :withdraw]
+    post      'orders/new_distination'        => 'orders#new_distination',     as: 'orders_new_distination'
+    post      'orders/create_order'           => 'orders#create_order',        as: 'orders_create_order'
+    resources :products,      only: [:index, :show] do
+      resource :likes,        only: [:create, :destroy]
+    end
+    resources :customers,     only: [:show, :withdraw_confirm, :edit, :update, :withdraw] do
+      resources :likes,       only: [:index]
+    end
+
     resources :distinations,  only: [:index, :create, :edit, :update, :destroy]
     resources :cart_products, only: [:index]
     resources :orders,        only: [:new, :create, :index, :show]

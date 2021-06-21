@@ -22,4 +22,6 @@
   <h4 clas="col">注文履歴</h4>
   <div class="col"><%= link_to "一覧画面を見る", public_orders_path, class: "btn btn-primary" %></div>
  </div>
+
+ <div class="mt-3"><%= link_to "お気に入り商品一覧", public_customer_likes_path(current_customer) %></div>
 </div>
