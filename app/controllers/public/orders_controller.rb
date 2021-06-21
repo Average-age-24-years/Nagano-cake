@@ -7,9 +7,13 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @new_distination = Distination.new
     @distinations    = @customer.distinations.all
-  end 
-  
+  end
+
   def confirm
+    @cart_products = current_customer.cart_products.all
+    @shipping       = shipping
+    @total_price    = subtotal_price
+    @billing_amount = subtotal_price + shipping
     @order = Order.new
     @order.payment   = order_params[:payment]
     if order_params[:radio]    == "radio1"
@@ -24,21 +28,21 @@ class Public::OrdersController < ApplicationController
     elsif order_params[:radio] == "radio3"
       @order.post_code = order_params[:post_code]
       @order.address   = order_params[:address]
-      @order.name      = order_params[:name] 
+      @order.name      = order_params[:name]
       new_distination
     else
       render new_public_order_path
     end
   end
-  
-  def create 
+
+  def create
     order             = Order.new
     order.customer_id = @customer.id
     order.shipping    = shipping
     order.total_price = subtotal_price + shipping
     order.payment     = order_params[:payment]
     order.post_code   = order_params[:post_code]
-    order.address     = order_params[:name]
+    order.address     = order_params[:address]
     order.name        = order_params[:name]
     if order.save
       @customer.cart_products.destroy_all
@@ -46,8 +50,8 @@ class Public::OrdersController < ApplicationController
     else
       render :confirm
     end
-  end 
-  
+  end
+
   def thanks
   end
 
