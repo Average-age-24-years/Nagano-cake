@@ -31,8 +31,8 @@ Rails.application.routes.draw do
       passwords:     'admin/admins/passwords'
     }
     resources :products
-    resources :genres,    only:[:index, :create, :edit, :update]
-    resources :customers, only:[:index, :show, :edit, :update]
+    resources :genres,         only:[:index, :create, :edit, :update]
+    resources :customers,      only:[:index, :show, :edit, :update]
     resources :orders,         only:[:index, :show, :update]
     resources :order_products, only: [:update]
   end
@@ -42,8 +42,6 @@ Rails.application.routes.draw do
     patch     '/customers/withdraw'           => 'customers#withdraw',         as: 'withdraw_customer'
     get       'orders/confirm'                => 'orders#confirm',             as: 'orders_confirm'
     get       'orders/thanks'                 => 'orders#thanks',              as: 'orders_thanks'
-    post      'orders/new_distination'        => 'orders#new_distination',     as: 'orders_new_distination'
-    post      'orders/create_order'           => 'orders#create_order',        as: 'orders_create_order'
     resources :products,      only: [:index, :show]
     resources :customers,     only: [:show, :withdraw_confirm, :edit, :update, :withdraw]
     resources :distinations,  only: [:index, :create, :edit, :update, :destroy]

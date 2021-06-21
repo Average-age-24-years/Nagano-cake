@@ -1,5 +1,6 @@
-<h2 class='mt-5'>注文情報入力</h2>
-  <%= form_with model: @order, url: public_orders_path, local: true do |f| %>
+<div class="container">
+  <h2 class='mt-5'>注文情報入力</h2>
+  <%= form_with model: @order, url: public_orders_confirm_path, method: :get, local: true do |f| %>
   <h4 class='mt-4'>支払い方法</h4>
   <div class="radio">
     <label><%= f.radio_button :payment, :"クレジットカード", checked: true, class: "mr-2" %>クレジットカード</label></br>
@@ -14,14 +15,14 @@
       <%= f.radio_button :radio, :"radio2", class: "mr-2" %>登録済み住所から選択
     </label></br>
     <div class='select col-md-8'>
-      <%= f.select :chose_address, @distination, {}, {class: 'form-control'} %>
+      <%= f.collection_select(:id, @distinations, :id, :full_address) %>
     </div>
-  　</div>
+  </div>
   
   <label class='mt-4'><%= f.radio_button :radio, :"radio3" , class: "mr-2" %>新しいお届け先</label></br>
   <div class="form-group form-row">
     <label class="col-md-3 control-label"><%= f.label :郵便番号 %></label>
-    <div class="col-md-4"><%= f.text_field :postal_code, class: "form-control" %></div>
+    <div class="col-md-4"><%= f.text_field :post_code, class: "form-control" %></div>
   </div>
   
   <div class="form-group form-row">
@@ -36,3 +37,4 @@
       
   <div class="col-md-5"><%= f.submit "確認画面へ進む", class: 'btn btn-success mt-4' %></div>
   <% end %>
+</div>  
