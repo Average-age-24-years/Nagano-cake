@@ -29,6 +29,10 @@ class Public::OrdersController < ApplicationController
     else
       render new_public_order_path
     end
+    @cart_products  = @customer.cart_products.all
+    @shipping       = shipping
+    @total_price    = subtotal_price
+    @billing_amount = subtotal_price + shipping
   end
   
   def create 
@@ -38,9 +42,16 @@ class Public::OrdersController < ApplicationController
     order.total_price = subtotal_price + shipping
     order.payment     = order_params[:payment]
     order.post_code   = order_params[:post_code]
-    order.address     = order_params[:name]
-    order.name        = order_params[:name]
-    if order.save
+    order.address     = order_params[:address]
+    order.name        = order_params[:name] 
+    if order.save && @customer.cart_products.each do |products| 
+      order_product                = OrderProduct.new
+      order_product.product_id     = products.product.id
+      order_product.order_id       = order.id
+      order_product.products_price = products.product.price
+      order_product.quantity       = products.quantity
+      order_product.save
+    end 
       @customer.cart_products.destroy_all
       redirect_to public_orders_thanks_path
     else
