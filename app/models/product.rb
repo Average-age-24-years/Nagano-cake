@@ -8,15 +8,20 @@ class Product < ApplicationRecord
 
   has_many :order_products, dependent: :destroy
 
+  has_many :likes, dependent: :destroy
+
   validates :name,  presence: true
   validates :genre_id,  presence: true
   validates :image,  presence: true
   validates :introduction,  presence: true
   validates :price,  presence: true
   validates :is_active,  presence: true
-  
+
   def self.search_for(content, method)
       Product.where('name LIKE ?', '%'+content+'%')
   end
 
+  def liked_by?(customer)
+    likes.where(customer_id: customer.id).exists?
+  end
 end
