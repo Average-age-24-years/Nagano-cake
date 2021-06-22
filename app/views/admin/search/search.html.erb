@@ -22,9 +22,15 @@
               </td>
             </tr>
           </tbody>
-          </table>
+        <% end %>
+        </table>
+         <% if @records.count == 0 %>
+         <div>
+          <h4 class="d-flex align-items-center justify-content-center" style="height: 200px;">該当する会員はいません</h4>
+        </div>
         <% end %>
 <% elsif @model == 'product'%>
+<%= render 'layouts/admin_search' %>
   <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1">
@@ -56,6 +62,11 @@
             </tbody>
           <% end %>
         </table>
+        <% if @records.count == 0 %>
+         <div>
+          <h4 class="d-flex align-items-center justify-content-center" style="height: 200px;">該当する商品はありませんでした</h4>
+        </div>
+        <% end %>
     </div>
   </div>
 </div>

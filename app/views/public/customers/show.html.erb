@@ -1,25 +1,29 @@
 <div class="container">
-<h4 class="col-3 ml-5" style="background: #EEEEEE;">マイページ</h4>
-<div class="d-flex mt-4">
-<h4 class="mr-3" >登録情報</h4>
-<div><%= link_to "編集する", edit_public_customer_path, class: "btn btn-success" %></div>
-</div>
-<table class="table table-bordered">
- 
-　<tr><td>氏名</td><td><%= @customer.last_name %>　<%= (@customer.first_name) %></td></tr>
-　<tr><td>カナ</td><td><%= (@customer.last_name_kana) %>　<%= (@customer.first_name_kana) %></td></tr>
-　<tr><td>郵便番号</td><td><%= @customer.postal_code %></td></tr>
-　<tr><td>住所</td><td><%= @customer.address %></td></tr>
-　<tr><td>電話番号</td><td><%= @customer.telephone_number %></td></tr>
-　<tr><td>メールアドレス</td><td><%= @customer.email %></td></tr>
- 
-</table>
-<div class="row-6 my-3">
-<h4 class="col">配送先</h4>
-<div class="col"><%= link_to "一覧画面", class: "btn btn-success" %></div>
-</div>
-<div class="row-6">
- <h4 clas="col">注文履歴</h4>
- <div class="col"><%= link_to "一覧画面を見る", class: "btn btn-success" %></div>
+ <h4 class="bg-seconary">マイページ</h4>
+ <div class="row">
+ <h4 class="col">登録情報</h4>
+ <div class="col"><%= link_to "edit", edit_public_customer_path, class: "btn btn-success" %></div>
+ </div>
+ <table class="table table-bordered">
+
+ 　<tr><td>氏名</td><td><%= @customer.last_name %>　<%= (@customer.first_name) %></td></tr>
+ 　<tr><td>カナ</td><td><%= (@customer.last_name_kana) %>　<%= (@customer.first_name_kana) %></td></tr>
+ 　<tr><td>郵便番号</td><td><%= @customer.postal_code %></td></tr>
+ 　<tr><td>住所</td><td><%= @customer.address %></td></tr>
+ 　<tr><td>電話番号</td><td><%= @customer.telephone_number %></td></tr>
+ 　<tr><td>メールアドレス</td><td><%= @customer.email %></td></tr>
+
+ </table>
+ <div class="row-6">
+ <h4 class="col">配送先</h4>
+ <div class="col"><%= link_to "一覧画面", public_distinations_path, class: "btn btn-primary" %></div>
+ </div>
+ <div class="row-6">
+  <h4 clas="col">注文履歴</h4>
+  <div class="col"><%= link_to "一覧画面を見る", public_orders_path, class: "btn btn-primary" %></div>
+ </div>
+
+ <div class="mt-3"><%= link_to "お気に入り商品一覧", public_customer_likes_path(current_customer) %></div>
+
 </div>
 </div>

@@ -1,6 +1,7 @@
 
 <% if @model == 'genre' %>
-  <div class="container">
+ <%= render 'layouts/customer_search' %>
+ <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1">
      <h3 class="mt-3">商品検索結果 "<%= @content %>"</h3>
@@ -17,11 +18,18 @@
             <div>ジャンル: <%= search.name %></div>
                 </div>
         <% end %>
+        <%= paginate @records %>
         </div>
-    </div>
+        <% if @records.count == 0 %>
+         <div class="text-center">
+          <h4 class="my-5">該当する商品はありません</h4>
+        </div>
+        <% end %>
+      </div>
   </div>
 </div>
 <% elsif @model == 'product'%>
+<%= render 'layouts/customer_search' %>
   <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1">
@@ -40,6 +48,11 @@
                 </div>
           <% end %>
         </div>
+         <% if @records.count == 0 %>
+         <div class="text-center">
+          <h4 class="my-5">該当する商品はありません</h4>
+        </div>
+        <% end %>
     </div>
   </div>
 </div>
