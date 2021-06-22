@@ -13,7 +13,11 @@
     <div class="d-flex">
       <% @products.each do |product| %>
         <div class="mt-5 mr-5">
-          <div><%= attachment_image_tag product, :image, size: '250x180', format:'jpeg', fallback: 'sample.jpg' %></div>
+          <div>
+            <%= link_to public_product_path(product) do %>
+              <%= attachment_image_tag product, :image, size: '250x180', format:'jpeg', fallback: 'sample.jpg' %>
+            <% end %>
+          </div>
           <div class="px-2 py-3" style="background-color: #ffffff">
             <div><%= product.name %></div>
             <div>¥<%= product.price.to_s(:delimited) %></div>
