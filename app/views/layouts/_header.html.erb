@@ -20,11 +20,7 @@
         <% end %>
       </ul>
 
-      <button class="navbar-toggler text-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse" id="sp-menu">
         <ul class="navbar-nav ml-auto">
           <% if admin_admin_signed_in? %>
           <li class="mr-4 nav-item"><%= link_to '商品一覧',  admin_products_path, class: "nav-link text-dark" %></li>
@@ -33,10 +29,10 @@
           <li class="mr-4 nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: "nav-link text-dark" %></li>
           <li class="mr-4 nav-item"><%= link_to 'ログアウト', destroy_admin_admin_session_path, class: "nav-link text-dark", method: :delete %></li>
           <% elsif customer_signed_in? %>
-          <li class="mr-4 nav-item"><%= link_to 'MY PAGE', public_customer_path(current_customer), class: "nav-link text-dark" %></li>
-          <li class="mr-4 nav-item"><%= link_to 'PRODUCTS', public_products_path, class: "nav-link text-dark" %></li>
-          <li class="mr-4 nav-item"><%= link_to 'MY CART', public_cart_products_path, class: "nav-link text-dark" %></li>
-          <li class="mr-4 nav-item"><%= link_to 'LOG OUT', destroy_customer_session_path, class: "nav-link text-dark", method: :delete %></li>
+          <li class="mr-4 nav-item"><a  href="#"><%= link_to 'MY PAGE', public_customer_path(current_customer), class: "nav-link text-dark" %></a></li>
+          <li class="mr-4 nav-item"><a  href="#"><%= link_to 'PRODUCTS', public_products_path, class: "nav-link text-dark" %></a></li>
+          <li class="mr-4 nav-item"><a  href="#"><%= link_to 'MY CART', public_cart_products_path, class: "nav-link text-dark" %></a></li>
+          <li class="mr-4 nav-item"><a  href="#"><%= link_to 'LOG OUT', destroy_customer_session_path, class: "nav-link text-dark", method: :delete %></a></li>
           <% else %>
           <li class="mr-4 nav-item"><%= link_to 'ABOUT', about_path, class: "nav-link text-dark" %></li>
           <li class="mr-4 nav-item"><%= link_to 'PRODUCTS', public_products_path, class: "nav-link text-dark" %></li>
@@ -45,7 +41,13 @@
           <% end %>
         </ul>
         </div>
-
+      <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
       </div>
 </div>
   </nav>
