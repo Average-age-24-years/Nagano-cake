@@ -21,6 +21,7 @@
       </ul>
 
       <div class="collapse navbar-collapse" id="sp-menu">
+
         <ul class="navbar-nav ml-auto">
           <% if admin_admin_signed_in? %>
           <li class="mr-4 nav-item"><%= link_to '商品一覧',  admin_products_path, class: "nav-link text-dark" %></li>
@@ -28,11 +29,13 @@
           <li class="mr-4 nav-item"><%= link_to '注文履歴一覧', admin_orders_path, class: "nav-link text-dark" %></li>
           <li class="mr-4 nav-item"><%= link_to 'ジャンル一覧', admin_genres_path, class: "nav-link text-dark" %></li>
           <li class="mr-4 nav-item"><%= link_to 'ログアウト', destroy_admin_admin_session_path, class: "nav-link text-dark", method: :delete %></li>
+          <li class="mr-4 nav-item"><%= link_to '検索', admin_search_path, class: "nav-link text-dark" %></li>
           <% elsif customer_signed_in? %>
-          <li class="mr-4 nav-item"><a  href="#"><%= link_to 'MY PAGE', public_customer_path(current_customer), class: "nav-link text-dark" %></a></li>
-          <li class="mr-4 nav-item"><a  href="#"><%= link_to 'PRODUCTS', public_products_path, class: "nav-link text-dark" %></a></li>
-          <li class="mr-4 nav-item"><a  href="#"><%= link_to 'MY CART', public_cart_products_path, class: "nav-link text-dark" %></a></li>
-          <li class="mr-4 nav-item"><a  href="#"><%= link_to 'LOG OUT', destroy_customer_session_path, class: "nav-link text-dark", method: :delete %></a></li>
+          <li class="mr-4 nav-item"><%= link_to 'MY PAGE', public_customer_path(current_customer), class: "nav-link text-dark" %></li>
+          <li class="mr-4 nav-item"><%= link_to 'PRODUCTS', public_products_path, class: "nav-link text-dark" %></li>
+          <li class="mr-4 nav-item"><%= link_to 'MY CART', public_cart_products_path, class: "nav-link text-dark" %></li>
+          <li class="mr-4 nav-item"><%= link_to 'LOG OUT', destroy_customer_session_path, class: "nav-link text-dark", method: :delete %></li>
+          <li class="mr-4 nav-item"><%= link_to 'SEARCH', public_search_path, class: "nav-link text-dark" %></li>
           <% else %>
           <li class="mr-4 nav-item"><%= link_to 'ABOUT', about_path, class: "nav-link text-dark" %></li>
           <li class="mr-4 nav-item"><%= link_to 'PRODUCTS', public_products_path, class: "nav-link text-dark" %></li>
@@ -51,4 +54,4 @@
       </div>
 </div>
   </nav>
-
+   

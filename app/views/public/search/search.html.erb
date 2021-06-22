@@ -1,38 +1,23 @@
+
 <% if @model == 'genre' %>
   <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1">
      <h3 class="mt-3">商品検索結果 "<%= @content %>"</h3>
-      <h5 class="mt-3 mb-3 d-table" style="background-color: #e6e3de;">　商品一覧　</h5>
-      <p class= mb-1>　(全<%= @active_products.count %>件)</p>
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th>商品ID</th>  
-            <th>商品名</th>
-            <th>ジャンル</th>
-            <th>税抜価格</th>
-            <th>ステータス</th>
-          </tr>
-        </thead>
-        <% @record.each do |product| %>
-        <% @records.each do |genre| %>
-          <tbody>
-            <tr>
-              <td><%= product.id %></td>
-            　<td><%= link_to "#{product.name}", public_product_path(product) %></td>
-              <td><%= genre.name %></td>
-            　<td><%= product.price.to_s(:delimited) %></td>
-                <% if product.is_active? %>
-                  <td class="text-success">販売中</td>
-                <% else %>
-                  <td class="text-secondary">販売停止中</td>
-                <% end %>              
-            </tr>
-          </tbody>
+      <h5 class="mt-3 mb-3 d-table" style="background-color: #e6e3de;">商品一覧</h5>
+      <p class= mb-1>(全<%= @records.count %>件)</p>
+        <div class="d-flex flex-wrap">
+        <% @records.each do |search| %>
+             <div class="mr-4 mb-4">
+             <%= link_to public_product_path(search) do %>
+                <%= attachment_image_tag search, :image, size: '200x150', format:'jpeg', fallback: 'sample.jpg' %>
+              <% end %>
+              <div>商品名: <%= link_to "#{search.name}", public_product_path(search) %></div>
+             <div>値段(税抜き): ¥<%= search.price.to_s(:delimited) %></div>
+            <div>ジャンル: <%= search.name %></div>
+                </div>
         <% end %>
-        <% end %>
-      </table>
+        </div>
     </div>
   </div>
 </div>
@@ -41,33 +26,20 @@
   <div class="row">
     <div class="col-md-10 offset-md-1">
      <h3 class="mt-3">商品検索結果 "<%= @content %>"</h3>
-      <h5 class="mt-3 mb-5 d-table" style="background-color: #e6e3de;">　商品一覧　</h5>
-        <table class="table">
-          <thead class="thead-light">
-            <tr>
-              <th>商品ID</th>
-              <th>商品名</th>
-              <th>税抜価格</th>
-              <th>ジャンル</th>
-              <th>ステータス</th>
-            </tr>
-          </thead>
-          <% @records.each do |product| %>
-            <tbody>
-              <tr>
-                <td><%= product.id %></td>
-                <td><%= link_to "#{product.name}", admin_product_path(product) %></td>
-                <td><%= product.price.to_s(:delimited) %></td>
-                <td><%= Genre.find_by(id: product.genre_id).name %></td>
-                <% if product.is_active? %>
-                  <td class="text-success">販売中</td>
-                <% else %>
-                  <td class="text-secondary">販売停止中</td>
-                <% end %>
-              </tr>
-            </tbody>
+      <h5 class="mt-3 mb-5 d-table" style="background-color: #e6e3de;">商品一覧</h5>
+      <p class= mb-1>(全<%= @records.count %>件)</p>
+        <div class="d-flex flex-wrap">
+          <% @records.each do |search| %>
+            <div class="mr-4 mb-4">
+              <%= link_to public_product_path(search) do %>
+                <%= attachment_image_tag search, :image, size: '200x150', format:'jpeg', fallback: 'sample.jpg' %>
+              <% end %>
+                <div>商品名: <%= link_to "#{search.name}", admin_product_path(search) %></div>
+                <div>値段(税抜き): <%= search.price.to_s(:delimited) %></div>
+                <div>ジャンル: <%= Genre.find_by(id: search.genre_id).name %></div>
+                </div>
           <% end %>
-        </table>
+        </div>
     </div>
   </div>
 </div>
