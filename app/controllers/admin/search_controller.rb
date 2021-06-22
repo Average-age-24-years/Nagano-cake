@@ -4,9 +4,9 @@ class Admin::SearchController < ApplicationController
 		@content = params[:content]
 		@method = params[:method]
 		if @model == 'customer'
-			@records = Customer.search_for(@content, @method)
+			@records = Customer.search_for(@content, @method).page(params[:page]).reverse_order
 		else
-			@records = Product.search_for(@content, @method)
+			@records = Product.search_for(@content, @method).page(params[:page]).reverse_order
 		end
 	end
 
