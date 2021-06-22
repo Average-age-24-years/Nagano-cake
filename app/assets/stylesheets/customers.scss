@@ -1,3 +1,10 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.withdraw {
+    background-image: url(withdraw.png);
+    background-size: cover;
+    background-position: top 50px;
+    height:500px;
+    width:800px;
+}

@@ -4,12 +4,11 @@ class Public::SearchController < ApplicationController
 		@content = params[:content]
 		@method = params[:method]
 		if @model == 'genre'
-			@records = Genre.search_for(@content, @method)
-			@record = Product.search_for(@content, @method)
+			@records = Product.search_for(@content, @method).page(params[:page]).reverse_order
 			@active_products = Product.where(is_active: true)
 		else
-			@records = Product.search_for(@content, @method)
+			@records = Product.search_for(@content, @method).page(params[:page]).reverse_order
+			@active_products = Product.where(is_active: true)
 		end
 	end
-
 end

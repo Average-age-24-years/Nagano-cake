@@ -20,11 +20,8 @@
         <% end %>
       </ul>
 
-      <button class="navbar-toggler text-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <div class="collapse navbar-collapse" id="sp-menu">
 
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if admin_admin_signed_in? %>
           <li class="mr-4 nav-item"><%= link_to '商品一覧',  admin_products_path, class: "nav-link text-dark" %></li>
@@ -45,8 +42,14 @@
           <% end %>
         </ul>
         </div>
-
+      <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
       </div>
 </div>
   </nav>
-
+   
