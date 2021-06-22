@@ -3,7 +3,7 @@
     <div class="col-md-10 offset-1">
       <div class="d-flex my-4">
         <h4>商品一覧</h4>
-        <p>　(全<%= @active_products.count %>件)</p>
+        <h4 class="ml-2">(<%= @selection %>)</h4>
         <div class="ml-5">
           <%= form_with model: @product, url: public_product_sort_path, method: :get, local: true do |f| %>
             <%= f.select :keyword, [ ['新着順', 'new'],['価格が低い順', 'low_price'],['人気順', 'likes']] %>
@@ -36,12 +36,11 @@
                 <% end %>
               <% end %>
 
-
             </div>
           <% end %>
         <% end %>
       </div>
-      <%= paginate @products %>
+      <%#= paginate @products %>
     </div>
   </div>
 </div>
