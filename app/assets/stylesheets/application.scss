@@ -23,6 +23,16 @@ ul > li {
 
 body {
  font-family: 'Quicksand','小塚ゴシック Pro R','Kozuka Gothic Pro Regular',"Noto Sans Japanese", "游ゴシック体", "Yu Gothic", YuGothic, "メイリオ", "Meiryo", "游ゴシック","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
+  min-height: calc(100vh - 100px);
+  padding-bottom: 30px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
 }
 
 
@@ -60,8 +70,8 @@ h1 {
 }
 .menu-trigger {
   position: relative;
-  width: 50px;
-  height: 44px;
+  width: 30px;
+  height: 33px;
 }
 .menu-trigger span {
   position: absolute;
@@ -75,7 +85,7 @@ h1 {
   top: 0;
 }
 .menu-trigger span:nth-child(2) {
-  top: 20px;
+  top: 15px;
 }
 .menu-trigger span:nth-child(3) {
   bottom: 0;
@@ -100,7 +110,7 @@ h1 {
   position: fixed;
   top: 0;
   left: 0;
-  background: #000;
+  background: #fff;
   color: #fff;
   width: 100%;
   min-height: 100%;
@@ -110,6 +120,7 @@ h1 {
 #sp-menu li {
   text-align: center;
   margin-bottom: 30px;
+  margin-top: 30px;
 }
 #sp-menu a {
   color: #fff;
