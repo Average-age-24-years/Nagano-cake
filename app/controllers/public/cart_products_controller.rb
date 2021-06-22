@@ -10,19 +10,21 @@ class Public::CartProductsController < ApplicationController
     @cart_product = current_customer.cart_products.new(cart_product_params)
     @cart_products = current_customer.cart_products.all
 
-    @cart_products.each do |cart_product|
-	    if cart_product.product_id == @cart_product.product_id
-			  sum_of_quantity = cart_product.quantity + @cart_product.quantity
-			  cart_product.update_attribute(:quantity, sum_of_quantity)
-			  @cart_product.delete
-	    end
-		end
-
-		if @cart_product.save
-		  redirect_to public_cart_products_path, notice: "カートに商品を追加しました"
-		else
-      redirect_to request.referrer, alert: "個数を選択してください"
-		end
+    unless @cart_product.quantity.present?
+  		redirect_to request.referrer, alert: "個数を選択してください"
+    else
+      @cart_products.each do |cart_product|
+  	    if cart_product.product_id == @cart_product.product_id
+  			  sum_of_quantity = cart_product.quantity + @cart_product.quantity
+  			  cart_product.update_attribute(:quantity, sum_of_quantity)
+  			  redirect_to public_cart_products_path, notice: "カートに商品を追加しました"
+  			  @cart_product.delete
+  	    end
+		  end
+    end
+  	if @cart_product.save
+  		redirect_to public_cart_products_path, notice: "カートに商品を追加しました"
+  	end
   end
 
   def update

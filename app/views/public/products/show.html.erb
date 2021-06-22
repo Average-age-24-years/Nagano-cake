@@ -1,4 +1,10 @@
 <div class="container my-5">
+  <% if @cart_product.errors.any? %>
+  <%= @cart_product.errors.count %>件のエラーが発生しました
+  <% @cart_product.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+  <% end %>
   <div class="row">
     <div class="col-md-8 offset-2 d-flex">
       <div class="mr-4">
@@ -13,18 +19,20 @@
           <%= f.hidden_field :product_id, value: @product.id %>
           <%= f.submit 'カートに入れる', class: "btn btn-sm btn-success ml-4" %>
         <% end %>
-        <% if @product.liked_by?(current_customer) %>
-          <div class="mt-4">
-            <%= link_to public_product_likes_path(@product), method: :delete do %>
-              <span class="btn btn-secondary btn-block fas fa-heart">お気に入り登録解除</span>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="mt-4">
-            <%= link_to public_product_likes_path(@product), method: :post do %>
-              <span class="btn btn-outline-secondary btn-block far fa-heart">お気に入りに登録</span>
-            <% end %>
-          </div>
+        <% if customer_signed_in? %>
+          <% if @product.liked_by?(current_customer) %>
+            <div class="mt-4">
+              <%= link_to public_product_likes_path(@product), method: :delete do %>
+                <span class="btn btn-secondary btn-block fas fa-heart">お気に入り登録解除</span>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="mt-4">
+              <%= link_to public_product_likes_path(@product), method: :post do %>
+                <span class="btn btn-outline-secondary btn-block far fa-heart">お気に入りに登録</span>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

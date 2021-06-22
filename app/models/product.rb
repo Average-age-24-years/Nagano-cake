@@ -24,4 +24,5 @@ class Product < ApplicationRecord
   def liked_by?(customer)
     likes.where(customer_id: customer.id).exists?
   end
+
 end
