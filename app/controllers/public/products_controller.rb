@@ -15,4 +15,9 @@ class Public::ProductsController < ApplicationController
     @cart_product = CartProduct.new
   end
 
+  def sort
+    selection = params[:keyword]
+    @products = Product.where(is_active: true).sort(selection)
+  end
+
 end

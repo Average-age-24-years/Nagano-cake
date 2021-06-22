@@ -24,4 +24,15 @@ class Product < ApplicationRecord
   def liked_by?(customer)
     likes.where(customer_id: customer.id).exists?
   end
+
+  def self.sort(selection)
+    case selection
+    when 'new'
+      return order(created_at: :DESC)
+    when 'low_price'
+      return order(price: :ASC)
+    when 'likes'
+      return joins(:order_products).group(:order_id).order('count(product_id) desc')
+    end
+  end
 end

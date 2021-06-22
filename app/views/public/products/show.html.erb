@@ -1,4 +1,10 @@
 <div class="container my-5">
+  <% if @cart_product.errors.any? %>
+  <%= @cart_product.errors.count %>件のエラーが発生しました
+  <% @cart_product.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+  <% end %>
   <div class="row">
     <div class="col-md-8 offset-2 d-flex">
       <div class="mr-4">
