@@ -22,9 +22,10 @@
                 <%= order.address %><br>
                 <%= order.customer.last_name + order.customer.first_name %>
               </td>
-              <td><% order.order_products.each do |order_product| %>
-                <%= order_product.product.name %><br>
-              <% end %>
+              <td>
+                <% order.order_products.each do |order_product| %>
+                  <%= order_product.product.name %><br>
+                <% end %>
               </td>
               <td><%= order.total_price %></td>
               <td><%= order.order_status %></td>
@@ -32,7 +33,7 @@
             </tr>
           </tbody>
         <% end %>
-      </table>
+      </table>q
     <%= paginate @orders %>
   </div>
 </div>

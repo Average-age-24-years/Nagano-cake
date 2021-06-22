@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     patch     'cart_products/:id/:product_id' => 'cart_products#update',      as: 'update_cart_products'
     delete    'cart_products/:id/:product_id' => 'cart_products#destroy',     as: 'destroy_cart_products'
     delete    'cart_products'                 => 'cart_products#all_destroy', as: 'all_destroy'
+    get       'product_sort'                  => 'products#sort',             as: 'product_sort'
   end
 
 end

@@ -15,4 +15,21 @@ class Public::ProductsController < ApplicationController
     @cart_product = CartProduct.new
   end
 
+  def sort
+    selection = params[:keyword]
+    @active_products = Product.where(is_active: true)
+
+    case selection
+      when 'new'
+        @selection = "新着順"
+        @products = @active_products.order(created_at: :DESC)
+      when 'low_price'
+        @selection = "価格が低い順"
+        @products = @active_products.order(price: :ASC)
+      when 'likes'
+        @selection = "人気順"
+        @products = @active_products.joins(:order_products).group(:order_id).order('count(product_id) desc')
+    end
+  end
+
 end
