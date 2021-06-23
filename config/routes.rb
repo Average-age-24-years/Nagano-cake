@@ -61,5 +61,9 @@ Rails.application.routes.draw do
     delete    'cart_products'                 => 'cart_products#all_destroy', as: 'all_destroy'
     get       'product_sort'                  => 'products#sort',             as: 'product_sort'
   end
+  
+  if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
 end
