@@ -29,11 +29,11 @@
               </td>
               <td><%= order.total_price %></td>
               <td><%= order.order_status %></td>
-              <td><%= link_to "表示する", public_order_path(order), class: "btn btn-sm btn-primary" %></td>
+              <td><%= link_to "表示する", public_order_path(order), class: "btn btn-sm btn-brown rounded-0" %></td>
             </tr>
           </tbody>
         <% end %>
-      </table>q
+      </table>
     <%= paginate @orders %>
   </div>
 </div>

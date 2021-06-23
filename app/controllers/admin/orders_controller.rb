@@ -4,6 +4,10 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @orders = Order.page(params[:page]).reverse_order
+    @orders_all = Order.all.order('created_at ASC')
+    order_sum = @orders_all.group("date(created_at)").sum(:total_price)
+    @weights = order_sum.values
+    @dates = order_sum.keys
   end
 
   def show

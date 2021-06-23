@@ -18,7 +18,7 @@
         </div>
 
         <div class="actions">
-          <div class="col-md-5"><%= f.submit "新規登録", class: 'btn btn-success' %></div>
+          <div class="col-md-5"><%= f.submit "新規登録", class: 'btn btn-brown rounded-0' %></div>
         </div>
       </form>
     <% end %>
@@ -26,7 +26,7 @@
   <div class="col-8">
     <table class="table table-bordered mt-5">
       <thead class="thead-light">
-        <tr><th>郵便番号</th><th>住所</th><th>宛名</th><th>ボタン</th></tr>
+        <tr><th>郵便番号</th><th>住所</th><th>宛名</th><th></th></tr>
       </thead>
         <% @distinations.each do |d| %>
           <tbody>
@@ -34,8 +34,8 @@
               <td><%= d.postal_code %></td>
               <td><%= d.address %></td>
               <td><%= d.name %></td>
-              <td><%= link_to "編集する", edit_public_distination_path(d), class: "btn btn-success mr-2" %>
-                  <%= link_to "削除する", public_distination_path(d), method: :delete, class: "btn btn-danger" %></td>
+              <td><%= link_to "編集する", edit_public_distination_path(d), class: "btn btn-outline-success mr-2" %>
+                  <%= link_to "削除する", public_distination_path(d), method: :delete, class: "btn btn-outline-danger" %></td>
             </tr>
           </tbody>
         <% end %>
