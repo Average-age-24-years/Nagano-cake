@@ -163,8 +163,40 @@ a.btn-1:hover:before {
 
 .product_img {
 	transition: 0.5s ;
-	}
+}
 
 .product_img:hover {
 	opacity: 0.5 ;
-	}
+}
+
+/* 通常のボタン色 */
+.btn-brown,
+.btn-brown.disabled, .btn-brown:disabled {
+  color: #fff;
+  background-color: #c9b090;
+  border-color: #c9b090;
+}
+
+/* focusされた時の枠線の色 */
+.btn-brown:focus, .btn-brown.focus,
+.btn-brown:not(:disabled):not(.disabled):active:focus, .btn-brown:not(:disabled):not(.disabled).active:focus,
+.show > .btn-brown.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem #fff;
+}
+
+/* hover時（マウスカーソルを重ねた時）の色（通常より濃いor暗めの色を指定） */
+.btn-brown:hover {
+  color: #fff;
+  background-color: #c9b090;
+  opacity: 0.8;
+  border-color: #c9b090;
+}
+
+/* active時の色（hover時と同等かさらに濃いor暗めの色を指定） */
+.btn-brown:not(:disabled):not(.disabled):active, .btn-brown:not(:disabled):not(.disabled).active,
+.show > .btn-brown.dropdown-toggle {
+  color: #fff;
+  background-color: #c9b090;
+  border-color: #c9b090;
+}
+
