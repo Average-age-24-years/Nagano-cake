@@ -123,7 +123,7 @@ section {
   max-width: 300px;
   margin: 0 auto;
 }
-a.btn-1 {
+li.btn-1 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -140,11 +140,11 @@ a.btn-1 {
   position: relative;
   transition-duration: 0.2s;
 }
-a.btn-1:hover {
+li.btn-1:hover {
   background: #c9b090;
   color: #fff;
 }
-a.btn-1:before {
+li.btn-1:before {
   content: "";
   display: inline-block;
   width: 0;
@@ -157,7 +157,7 @@ a.btn-1:before {
   left: 6%;
   margin-top: -7px;
 }
-a.btn-1:hover:before {
+li.btn-1:hover:before {
   border-color: transparent transparent transparent #fff;
 }
 
