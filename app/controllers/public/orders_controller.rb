@@ -57,6 +57,7 @@ class Public::OrdersController < ApplicationController
       order_product.save
     end 
       @customer.cart_products.destroy_all
+      ThanksMailer.send_when_create_order(order, @customer).deliver
       redirect_to public_orders_thanks_path
     else
       render :confirm
