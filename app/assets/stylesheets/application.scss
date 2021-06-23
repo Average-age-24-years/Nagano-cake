@@ -160,3 +160,11 @@ a.btn-1:before {
 a.btn-1:hover:before {
   border-color: transparent transparent transparent #fff;
 }
+
+.product_img {
+	transition: 0.5s ;
+	}
+
+.product_img:hover {
+	opacity: 0.5 ;
+	}
