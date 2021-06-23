@@ -4,11 +4,9 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @orders = Order.page(params[:page]).reverse_order
-    customer = Customer.current_scope
-    @orders_all = customer.all.order('created_at ASC')
-    order_date_sum = @orders_all.group("date(created_at)").sum(:total_price)
-    @prices = order_date_sum.values
-    @dates = order_date_sum.keys
+    @diaries=Order.all.order('created_at ASC')
+    @weights=@diaries.map(&:total_price)
+    @dates=@diaries.map{|diary| diary.created_at.strftime('%Y/%m/%d') }
   end
 
   def show

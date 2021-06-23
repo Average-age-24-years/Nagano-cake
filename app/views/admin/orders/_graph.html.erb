@@ -1,3 +1,4 @@
+<!-- Styles -->
 <style>
 #chartdiv {
   width: 100%;
@@ -10,7 +11,6 @@
 <script src="https://www.amcharts.com/lib/4/charts.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/kelly.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-<script src="//www.amcharts.com/lib/4/lang/ja_JP.js"></script>
 
 <!-- Chart code -->
 <script>
@@ -23,12 +23,9 @@ am4core.useTheme(am4themes_animated);
 
 // Create chart instance
 var chart = am4core.create("chartdiv", am4charts.XYChart);
-chart.dateFormatter.language = new am4core.Language(); 
-chart.dateFormatter.language.locale = am4lang_ja_JP; 
-chart.language.locale["_date_day"] = "MMMdd日";
-chart.language.locale["_date_year"] = "yyyy年";
+
 //JSON形式で値を渡す
-const prices = <%== JSON.dump(@prices) %>;
+const weights = <%== JSON.dump(@weights) %>;
 const dates = <%== JSON.dump(@dates) %>;
 //表示期間を計算
 var firstDate = new Date(dates[0])
@@ -40,13 +37,13 @@ chart.data = generateChartData();
 
 // Create axes
 var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-dateAxis.renderer.grid.template.location = 0;
+dateAxis.renderer.minGridDistance = 50;
 
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 
 // Create series
 var series = chart.series.push(new am4charts.LineSeries());
-series.dataFields.valueY = "price";
+series.dataFields.valueY = "weight";
 series.dataFields.dateX = "date";
 series.strokeWidth = 2;
 series.minBulletDistance = 10;
@@ -65,21 +62,18 @@ chart.cursor = new am4charts.XYCursor();
 chart.cursor.xAxis = dateAxis;
 chart.cursor.snapToSeries = series;
 
-dateAxis.renderer.grid.template.strokeOpacity = 0;
-valueAxis.renderer.grid.template.strokeOpacity = 0.07;
-
 //不連続な間隔(日付)で投稿された値を表示する
 function generateChartData() {
   var chartData = [];
-  for (var j =0; j< prices.length; j++){
+  for (var j =0; j< weights.length; j++){
     for (var i = 0; i < termDate; i++) {
       var newDate = new Date(firstDate)
       newDate.setDate(newDate.getDate() + i); //初日からi日分たす
       if ((new Date(dates[j])) - (newDate)==0){
-        price =prices[j]
+        weight =weights[j]
         chartData.push({
             date: newDate,
-            price: price
+            weight: weight
         });
       }
     }
