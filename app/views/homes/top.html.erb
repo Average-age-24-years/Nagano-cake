@@ -15,7 +15,7 @@
         <div class="mt-5 mr-5">
           <div>
             <%= link_to public_product_path(product) do %>
-              <%= attachment_image_tag product, :image, size: '250x180', format:'jpeg', fallback: 'sample.jpg' %>
+              <%= attachment_image_tag product, :image, size: '250x180', format:'jpeg', fallback: 'sample.jpg', class: "product_img" %>
             <% end %>
           </div>
           <div class="px-2 py-3" style="background-color: #ffffff">

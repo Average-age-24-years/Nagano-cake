@@ -28,7 +28,10 @@ class Public::ProductsController < ApplicationController
         @products = @active_products.order(price: :ASC)
       when 'likes'
         @selection = "人気順"
-        @products = @active_products.joins(:order_products).group(:order_id).order('count(product_id) desc')
+        @products = Product.includes(:order_products).sort {|a,b|
+        b.order_products.includes(:order_products).count <=>
+        a.order_products.includes(:order_products).count
+        }
     end
   end
 

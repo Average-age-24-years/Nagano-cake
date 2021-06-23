@@ -10,10 +10,10 @@
         <div class="d-flex flex-wrap">
           <% @products.each do |product| %>
             <div class="mr-4">
-              <%= link_to public_product_path(product) do %>
-                <%= attachment_image_tag product.product, :image, size: '200x150', format:'jpeg', fallback: 'sample.jpg' %>
+              <%= link_to public_product_path(product.product.id) do %>
+                <%= attachment_image_tag product.product, :image, size: '200x150', format:'jpeg', class: "product_img" %>
               <% end %>
-              <div class="my-2"><%= link_to "#{product.product.name}", public_product_path(product) %></div>
+              <div class="my-2"><%= link_to "#{product.product.name}", public_product_path(product.product.id) %></div>
               <div class="mb-2">¥<%= product.product.price.to_s(:delimited) %></div>
 
               <% if product.product.liked_by?(current_customer) %>
