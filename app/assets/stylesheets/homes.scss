@@ -28,36 +28,36 @@ header, h1 {
   height: 500px;
 }
 
-h1 {
-  display: inline-block;
-  position: relative;
-}
+// h1 {
+//   display: inline-block;
+//   position: relative;
+// }
 
-h1:before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -20px; /*下線の上下位置調整*/
-  display: inline-block;
-  width: 100px; /*下線の幅*/
-  height: 3px; /*下線の太さ*/
-  -moz-transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translate(-50%); /*位置調整*/
-  background-color: #666666; /*下線の色*/
-}
+// h1:before {
+//   content: '';
+//   position: absolute;
+//   left: 50%;
+//   bottom: -20px; /*下線の上下位置調整*/
+//   display: inline-block;
+//   width: 100px; /*下線の幅*/
+//   height: 3px; /*下線の太さ*/
+//   -moz-transform: translateX(-50%);
+//   -webkit-transform: translateX(-50%);
+//   -ms-transform: translateX(-50%);
+//   transform: translate(-50%); /*位置調整*/
+//   background-color: #666666; /*下線の色*/
+// }
 
 .bg-gray {
   margin-top: 50px;
 }
 
-.about {
-  background-image: url(about.png);
-  background-size:cover;
-  background-position: right;
-  height: 300px;
-}
+// .about {
+//   background-image: url(about.png);
+//   background-size:cover;
+//   background-position: right;
+//   height: 300px;
+// }
 
 #about-image {
   height: 250px;
@@ -65,3 +65,57 @@ h1:before {
   margin: 0 auto;
 }
 
+.heading{
+  background-color: #ebe3d9;
+}
+
+.about1{
+  opacity : 0.8;
+}
+
+.top-image{
+  position:relative;
+}
+
+.top-text{
+  position:absolute;
+  top: 20%;
+  left: 30%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  color: #cabaad;
+  font-weight: bold;
+}
+
+
+h6 span {
+  display: inline-block;
+}
+
+.fadein {
+  opacity : 0;
+  transform: translateY(20px);
+  transition: all 1s;
+}
+
+.Text-Span {
+  position: relative;
+  z-index: 1;
+}
+.Text-Span:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  width: 0%;
+  height: 2px;
+  background: #ebe3d9;
+  z-index: -1;
+  transition: all 3.5s;
+}
+.Text-Span.isActive:after {
+  width: 100%;
+}
