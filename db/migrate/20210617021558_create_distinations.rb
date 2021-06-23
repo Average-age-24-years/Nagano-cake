@@ -8,5 +8,6 @@ class CreateDistinations < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :distinations, :id
   end
 end
