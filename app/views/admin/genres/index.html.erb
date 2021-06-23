@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-10 col-lg-6 offset-md-1">
       <h5 class="mt-3 mb-5 d-table" style="background-color: #e6e3de;">　ジャンル一覧・追加　</h5>
-      <%= form_with model: [:admin, @genre] do |f| %>
+      <%= form_with model: [:admin, @genre], local: true do |f| %>
         <div class="d-flex mb-5">
           <p class="text-nowrap">ジャンル名</p>
           <div class="mx-5"><%= f.text_field :name, placeholder: "ジャンル名" %></div>
