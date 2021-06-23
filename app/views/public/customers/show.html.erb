@@ -1,11 +1,11 @@
 <div class="container">
- <h4 class="bg-seconary">マイページ</h4>
- <div class="row">
- <h4 class="col">登録情報</h4>
- <div class="col"><%= link_to "edit", edit_public_customer_path, class: "btn btn-success" %></div>
+ <div class="row-4 text-center">
+ <h4 class="col-2 ml-5 mt-3" style="background-color: #DDDDDD;">マイページ</h4>
  </div>
+ <table class="table table-borderless mb-0" style="width: 300px;">
+  <tr><td><h4>登録情報</h4></td><td><%= link_to "編集する", edit_public_customer_path, class: "btn btn-success" %></td></tr>
+</table>
  <table class="table table-bordered">
-
  　<tr><td>氏名</td><td><%= @customer.last_name %>　<%= (@customer.first_name) %></td></tr>
  　<tr><td>カナ</td><td><%= (@customer.last_name_kana) %>　<%= (@customer.first_name_kana) %></td></tr>
  　<tr><td>郵便番号</td><td><%= @customer.postal_code %></td></tr>
@@ -14,16 +14,14 @@
  　<tr><td>メールアドレス</td><td><%= @customer.email %></td></tr>
 
  </table>
- <div class="row-6">
- <h4 class="col">配送先</h4>
- <div class="col"><%= link_to "一覧画面", public_distinations_path, class: "btn btn-primary" %></div>
- </div>
- <div class="row-6">
-  <h4 clas="col">注文履歴</h4>
-  <div class="col"><%= link_to "一覧画面を見る", public_orders_path, class: "btn btn-primary" %></div>
- </div>
-
- <div class="mt-3"><%= link_to "お気に入り商品一覧", public_customer_likes_path(current_customer) %></div>
-
+ 
+ <table class="table table-borderless" style="width: 250px;">
+  <tr><th >配送先</th><th><%= link_to "一覧画面", public_distinations_path, class: "btn btn-primary" %></th></tr>
+  <tr><td>注文履歴</td><td><%= link_to "一覧画面を見る", public_orders_path, class: "btn btn-primary" %></td></tr>
+</table>
+ <table class="table table-borderless" style="width: 300px;">
+  <tr><td> 　</td><td><%= link_to "お気に入り商品一覧", public_customer_likes_path(current_customer), class: "btn btn-primary" %></td></tr>
+</table>
 </div>
 </div>
+

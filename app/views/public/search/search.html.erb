@@ -21,9 +21,9 @@
         <%= paginate @records %>
         </div>
         <% if @records.count == 0 %>
-         <div class="text-center">
-          <h4 class="my-5">該当する商品はありません</h4>
-        </div>
+      <div class="d-flex align-items-center justify-content-center" style="height:250px;">
+        <h4>該当する商品はありません</h4>
+      </div>
         <% end %>
       </div>
   </div>
@@ -49,9 +49,10 @@
           <% end %>
         </div>
          <% if @records.count == 0 %>
-         <div class="text-center">
-          <h4 class="my-5">該当する商品はありません</h4>
         </div>
+      <div class="d-flex align-items-center justify-content-center" style="height:250px;">
+        <h4>該当する商品はありません</h4>
+      </div>
         <% end %>
     </div>
   </div>
