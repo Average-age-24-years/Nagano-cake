@@ -12,16 +12,16 @@ header, h1 {
 }
 
 .slide1 {
-  background-image: image-url(slide2.png);
+  background-image: image-url("slide2.png");
 }
 .slide2 {
-  background-image: image-url(slide1.png);
+  background-image: image-url("slide1.png");
 }
 .slide3 {
-  background-image: image-url(slide3.png);
+  background-image: image-url("slide3.png");
 }
 .slide4 {
-  background-image: image-url(slide4.png);
+  background-image: image-url("slide4.png");
 }
 
 #container {
