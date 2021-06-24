@@ -1,0 +1,101 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+header, h1 {
+  font-family: 'Quicksand','小塚ゴシック Pro R','Kozuka Gothic Pro Regular',"Noto Sans Japanese", "游ゴシック体", "Yu Gothic", YuGothic, "メイリオ", "Meiryo", "游ゴシック","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
+}
+
+.nav, h1 {
+  letter-spacing: 0.2em;
+  color: #666666;
+}
+
+.slide1 {
+  background-image: url(slide2.png);
+}
+.slide2 {
+  background-image: url(slide1.png);
+}
+.slide3 {
+  background-image: url(slide3.png);
+}
+.slide4 {
+  background-image: url(slide4.png);
+}
+
+#container {
+  height: 500px;
+}
+
+.topics{
+  background-color: #ebe3d9;
+}
+
+.topics-text{
+  line-height : 1.2;
+}
+
+
+.bg-gray {
+  margin-top: 50px;
+}
+
+#about-image {
+  height: 250px;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.heading{
+  background-color: #ebe3d9;
+}
+
+.about1{
+  opacity : 0.7;
+}
+
+.top-image{
+  position:relative;
+}
+
+.top-text{
+  position:absolute;
+  top: 35%;
+  left: 0%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+}
+
+
+h6 span {
+  display: inline-block;
+}
+
+.fadein {
+  opacity : 0;
+  transform: translateY(20px);
+  transition: all 1s;
+}
+
+.Text-Span {
+  position: relative;
+  z-index: 1;
+}
+.Text-Span:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  width: 0%;
+  height: 2px;
+  background: #ebe3d9;
+  z-index: -1;
+  transition: all 3.5s;
+}
+.Text-Span.isActive:after {
+  width: 100%;
+}

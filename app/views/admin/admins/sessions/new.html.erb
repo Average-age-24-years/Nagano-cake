@@ -1,0 +1,23 @@
+<div class="container">
+<h2 class='mt-5 mx-auto d-table'>管理者ログイン</h2>
+<div class='text-center'>
+  <table class="table table-hover table-inverse">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <form class="form-horizontal">
+        <div class="form-group mt-5">
+          <label class="col-md-3 control-label"><%= f.label :メールアドレス %></div>
+          <div class="col-md-5 mx-auto"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></div>
+        </div>
+
+        <div class="form-group mt-5">
+          <label class="col-md-3 control-label"><%= f.label :パスワード %></div>
+          <div class="col-md-5 mx-auto"><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></div>
+        </div>
+
+        <div class="actions mt-4">
+          <%= f.submit "Log in", class: 'btn btn-info' %>
+        </div>
+      </form>
+    <% end %>
+</div>
+</div>

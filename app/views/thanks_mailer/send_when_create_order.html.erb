@@ -1,0 +1,14 @@
+
+<h2><%= @customer.last_name + @customer.first_name %> 様</h2>
+<p>この度は、商品をお買い上げいただきありがとうございました。</p>
+<p>下記の宛先に配送させていただきますのでしばらくお待ちください</p>
+　 　
+　 
+
+<p>宛名：　<%= @order.name %></p>
+<p>郵便番号：　<%= @order.post_code %></p>
+<p>住所：　<%= @order.address %></p>
+<p>支払い方法：　<%= @order.payment %></p>
+<p>請求金額：　<%= @order.total_price %>円</p>
+
+<p>今後とも NAGANO CAKE をよろしくお願いいたします。</p>
