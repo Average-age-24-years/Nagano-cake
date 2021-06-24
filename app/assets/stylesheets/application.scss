@@ -24,9 +24,47 @@ ul > li {
 body {
  font-family: 'Quicksand','小塚ゴシック Pro R','Kozuka Gothic Pro Regular',"Noto Sans Japanese", "游ゴシック体", "Yu Gothic", YuGothic, "メイリオ", "Meiryo", "游ゴシック","ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
 }
+.link {
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  transition: all 1.0s;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  opacity: 0.5;
+}
+
+.link:before, .link:after {
+  border-top: 1px solid;
+  content: "";
+  width: 3em;
+  transition: all 0.3s;
+}
+.link:before {
+  margin-right: 1em; 
+}
+.link:after {
+  margin-left: 1em;
+}
+
+.link:hover:before, .link:hover:after{
+  width: 5em;
+}
 
 
-@media (max-width: 480px){
+.title-header{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+
+@media (max-width: 768px){
 * {
   margin: 0;
   padding: 0;
@@ -43,6 +81,7 @@ h1 {
   margin: 0 auto 50px;
   background-color: #eee;
 }
+
 /* ---------------------------- */
 /* ---- ハンバーガーアイコン ---- */
 /* ---------------------------- */
@@ -204,4 +243,3 @@ a.btn-1:hover:before {
   background-color: #c9b090;
   border-color: #c9b090;
 }
-
