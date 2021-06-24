@@ -35,6 +35,12 @@
     <div class="col-md-4"><%= f.text_field :name, class: "form-control" %></div>
   </div>
 
+  <h4 class='my-4'>クーポンコード入力</h4>
+  <div class="form-group form-row">
+    <label class="col-md-3 control-label"><%= f.label :クーポンコード %></label>
+    <div class="col-md-4"><%= f.text_field :code, class: "form-control" %></div>
+  </div>
+
   <div class="col-md-5"><%= f.submit "確認画面へ進む", class: 'btn btn-brown rounded-0 mt-4' %></div>
   <% end %>
 </div>

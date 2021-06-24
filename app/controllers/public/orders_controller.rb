@@ -9,12 +9,21 @@ class Public::OrdersController < ApplicationController
     @distinations    = @customer.distinations.all
   end
 
+  def shipping
+    if order_params[:code] == "202106" && current_customer.orders.count == 0
+      shipping = 0
+    else
+      shipping = 800
+    end
+  end
+
   def confirm
+    @order = Order.new
     @cart_products = current_customer.cart_products.all
-    @shipping       = shipping
     @total_price    = subtotal_price
     @billing_amount = subtotal_price + shipping
-    @order = Order.new
+    @shipping = shipping
+    @order.shipping = shipping
     @order.payment   = order_params[:payment]
     if order_params[:radio]    == "radio1"
       @order.post_code = @customer.postal_code
@@ -33,29 +42,26 @@ class Public::OrdersController < ApplicationController
     else
       render new_public_order_path
     end
-    @cart_products  = @customer.cart_products.all
-    @shipping       = shipping
-    @total_price    = subtotal_price
-    @billing_amount = subtotal_price + shipping
   end
 
   def create
     order             = Order.new
     order.customer_id = @customer.id
-    order.shipping    = shipping
-    order.total_price = subtotal_price + shipping
     order.payment     = order_params[:payment]
+    shipping          = order_params[:shipping].to_i
+    order.shipping    = order_params[:shipping]
+    order.total_price = subtotal_price + shipping
     order.post_code   = order_params[:post_code]
     order.address     = order_params[:address]
-    order.name        = order_params[:name] 
-    if order.save && @customer.cart_products.each do |products| 
+    order.name        = order_params[:name]
+    if order.save && @customer.cart_products.each do |products|
       order_product                = OrderProduct.new
       order_product.product_id     = products.product.id
       order_product.order_id       = order.id
       order_product.products_price = products.product.price
       order_product.quantity       = products.quantity
       order_product.save
-    end 
+    end
       @customer.cart_products.destroy_all
       ThanksMailer.send_when_create_order(order, @customer).deliver
       redirect_to public_orders_thanks_path
@@ -80,10 +86,6 @@ class Public::OrdersController < ApplicationController
 
   def customer
     @customer = current_customer
-  end
-
-  def shipping
-    shipping = 800
   end
 
   def customer_address
@@ -113,7 +115,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:radio, :payment, :post_code, :address, :name)
+    params.require(:order).permit(:radio, :payment, :post_code, :address, :name, :code, :shipping)
   end
 
 end
