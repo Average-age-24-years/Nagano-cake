@@ -92,10 +92,29 @@ h6 span {
   bottom: -14px;
   width: 0%;
   height: 2px;
-  background: #ebe3d9;
+  background-image: #ebe3d9;
   z-index: -1;
   transition: all 3.5s;
 }
 .Text-Span.isActive:after {
   width: 100%;
+}
+
+#content{
+    position: relative;
+}
+ 
+#topBtn {
+    /*-----必須-----*/
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+     
+    /*-----装飾-----*/
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
 }
