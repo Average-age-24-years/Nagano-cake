@@ -4,7 +4,7 @@ class Admin::ProductsController < ApplicationController
 
   def index
     products = Product.order(created_at: :asc)
-    @products = Kaminari.paginate_array(products).page(params[:page]).per(10)
+    @products = Kaminari.paginate_array(products).page(params[:page]).per(8)
   end
 
   def new

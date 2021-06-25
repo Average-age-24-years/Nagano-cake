@@ -1,7 +1,7 @@
 class Public::ProductsController < ApplicationController
 
   def index
-    @products = Product.page(params[:page]).reverse_order
+    @products = Product.page(params[:page]).per(4)
     @active_products = Product.where(is_active: true)
   end
 

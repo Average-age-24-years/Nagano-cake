@@ -264,6 +264,27 @@ a.btn-1:hover:before {
   border-color: #c9b090;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.pagination > li > a {
+  border: none;
+  color: #999;
+}
+
+.pagination > .active > a {
+  color: turquoise;
+  background-color: white;
+}
+
+.page-item.active .page-link {
+  background-color: #c9b090;
+}
+
 .fab{
   color: #762f07;
   font-size: 36px;
@@ -273,4 +294,3 @@ a.btn-1:hover:before {
 .fab:hover {
   opacity: 0.3;
 }
-
