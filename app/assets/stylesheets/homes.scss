@@ -11,6 +11,10 @@ header, h1 {
   color: #666666;
 }
 
+.top-page, .about-page{
+  background-color: #ffffff;
+}
+
 .slide1 {
   background-image: url(slide2.png);
 }
@@ -24,6 +28,19 @@ header, h1 {
   background-image: url(slide4.png);
 }
 
+// .slide1 {
+//   background-image: image-url("slide2.png");
+// }
+// .slide2 {
+//   background-image: image-url("slide1.png");
+// }
+// .slide3 {
+//   background-image: image-url("slide3.png");
+// }
+// .slide4 {
+//   background-image: image-url("slide4.png");
+// }
+
 #container {
   height: 500px;
 }
@@ -36,6 +53,13 @@ header, h1 {
   line-height : 1.2;
 }
 
+.text1, .text2, .text3{
+  transition: all 0.5s;
+}
+
+.text1:hover, .text2:hover, .text3:hover{
+  opacity: 0.7;
+}
 
 .bg-gray {
   margin-top: 50px;
@@ -52,24 +76,12 @@ header, h1 {
 }
 
 .about1{
-  opacity : 0.7;
+  opacity : 0.8;
 }
 
 .top-image{
   position:relative;
 }
-
-.top-text{
-  position:absolute;
-  top: 35%;
-  left: 0%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  margin:0;
-  padding:0;
-}
-
 
 h6 span {
   display: inline-block;
@@ -92,10 +104,49 @@ h6 span {
   bottom: -14px;
   width: 0%;
   height: 2px;
-  background: #ebe3d9;
+  background: #762f07;
   z-index: -1;
   transition: all 3.5s;
 }
 .Text-Span.isActive:after {
   width: 100%;
+}
+
+.coffee{
+    margin:2em 0;
+    position: relative;
+    padding: 0.5em 1.5em;
+    border-top: solid 4px #762f07;
+    border-bottom: solid 4px #762f07;
+}
+.coffee:before, .coffee:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: #762f07;
+}
+.coffee:before {left: 20px;}
+.coffee:after {right: 20px;}
+.coffee p {
+    margin: 0; 
+    padding: 0;
+}
+
+.top-text {
+  color: #762f07;
+  font-family: 'cursive', serif;
+}
+
+.all_products {
+  color: black;
+  transition: all 0.3s;
+}
+
+.all_products:hover {
+  text-decoration: none;
+  color: black;
+  opacity: 0.5;
 }
