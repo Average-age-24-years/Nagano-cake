@@ -250,3 +250,24 @@ a.btn-1:hover:before {
   background-color: #c9b090;
   border-color: #c9b090;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.pagination > li > a {
+  border: none;
+  color: #999;
+}
+
+.pagination > .active > a {
+  color: turquoise;
+  background-color: white;
+}
+
+.page-item.active .page-link {
+  background-color: #c9b090;
+}

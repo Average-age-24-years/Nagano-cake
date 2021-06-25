@@ -21,9 +21,15 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @cart_products = current_customer.cart_products.all
     @total_price    = subtotal_price
+    if order_params[:code].present? && current_customer.orders.count != 0
+      redirect_to new_public_order_path, alert: "無効なクーポンです"
+    elsif order_params[:code].present? && order_params[:code] != "202106"
+      redirect_to new_public_order_path, alert: "無効なクーポンです"
+    else
+      @shipping = shipping
+      @order.shipping = shipping
+    end
     @billing_amount = subtotal_price + shipping
-    @shipping = shipping
-    @order.shipping = shipping
     @order.payment   = order_params[:payment]
     if order_params[:radio]    == "radio1"
       @order.post_code = @customer.postal_code
