@@ -92,7 +92,7 @@ h6 span {
   bottom: -14px;
   width: 0%;
   height: 2px;
-  background-image: #ebe3d9;
+  background: #ebe3d9;
   z-index: -1;
   transition: all 3.5s;
 }
@@ -115,6 +115,8 @@ h6 span {
     height: 64px;
     line-height: 64px;
     text-align: center;
-    background-color: #333;
+    background-size: contain;
+    background-image: image-url("cat_photo.png");
+    background-size: 64px 64px;
     color: #fff;
 }
