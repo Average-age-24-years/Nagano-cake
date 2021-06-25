@@ -74,3 +74,8 @@ gem 'jquery-rails'
 gem 'pry-byebug'
 gem 'font-awesome-sass'
 gem 'dotenv-rails'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

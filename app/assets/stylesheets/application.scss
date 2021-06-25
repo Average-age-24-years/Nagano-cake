@@ -13,9 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
 
 ul > li {
  letter-spacing: 0.1em;
@@ -42,7 +49,7 @@ body {
   color: black;
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   transition: all 1.0s;
 }
 
@@ -60,7 +67,7 @@ body {
   transition: all 0.3s;
 }
 .link:before {
-  margin-right: 1em; 
+  margin-right: 1em;
 }
 .link:after {
   margin-left: 1em;
