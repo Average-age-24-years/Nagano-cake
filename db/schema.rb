@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_21_053352) do
+ActiveRecord::Schema.define(version: 2021_06_25_115632) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2021_06_21_053352) do
     t.integer "quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "index_cart_products_on_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -60,14 +59,13 @@ ActiveRecord::Schema.define(version: 2021_06_21_053352) do
     t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "index_distinations_on_id"
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "index_genres_on_id"
+    t.string "conversion_name"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -75,7 +73,6 @@ ActiveRecord::Schema.define(version: 2021_06_21_053352) do
     t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "index_likes_on_id"
   end
 
   create_table "order_products", force: :cascade do |t|
@@ -86,7 +83,6 @@ ActiveRecord::Schema.define(version: 2021_06_21_053352) do
     t.integer "product_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "index_order_products_on_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -100,7 +96,6 @@ ActiveRecord::Schema.define(version: 2021_06_21_053352) do
     t.integer "order_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "index_orders_on_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -112,7 +107,7 @@ ActiveRecord::Schema.define(version: 2021_06_21_053352) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "index_products_on_id"
+    t.string "conversion_name"
   end
 
 end
