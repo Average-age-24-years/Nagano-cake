@@ -14,6 +14,13 @@ class Admin::ProductsController < ApplicationController
 
   def create
     product = Product.new(product_params)
+    if product.name.match(/[一-龠々]/)
+      product.conversion_name = product.name.to_kanhira.to_roman
+    elsif product.name.is_hira? || product.name.is_kana?
+      product.conversion_name = product.name.to_roman
+    else
+      product.conversion_name = product.name
+    end
     if product.save
       redirect_to admin_product_path(product), notice: "商品を登録しました"
     else
@@ -35,6 +42,13 @@ class Admin::ProductsController < ApplicationController
 
   def update
     product = Product.find(params[:id])
+    if product.name.match(/[一-龠々]/)
+      product.conversion_name = product.name.to_kanhira.to_roman
+    elsif product.name.is_hira? || product.name.is_kana?
+      product.conversion_name = product.name.to_roman
+    else
+      product.conversion_name = product.name
+    end    
     if product.update(product_params)
       redirect_to admin_product_path(product), notice: "商品情報を編集しました"
     else

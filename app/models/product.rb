@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   validates :is_active,  presence: true
 
   def self.search_for(content, method)
-      Product.where('name LIKE ?', '%'+content+'%')
+      Product.where('conversion_name LIKE ?', '%'+content+'%')
   end
 
   def liked_by?(customer)
