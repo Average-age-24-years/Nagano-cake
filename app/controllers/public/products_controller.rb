@@ -1,8 +1,8 @@
 class Public::ProductsController < ApplicationController
 
   def index
-    @products = Product.page(params[:page]).per(8)
     @active_products = Product.where(is_active: true)
+    @products = Kaminari.paginate_array(@active_products).page(params[:page]).per(8)
   end
 
   def show
@@ -34,7 +34,7 @@ class Public::ProductsController < ApplicationController
         }
     end
 
-    @products = Kaminari.paginate_array(products).page(params[:page]).per(5)
+    @products = Kaminari.paginate_array(products).page(params[:page]).per(8)
   end
 
 end
