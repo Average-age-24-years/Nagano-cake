@@ -17,32 +17,28 @@ header, h1 {
 
 .slide1 {
   background-image: image-url("slide2.png");
+  height: 500px;
+  width: 100%;
 }
 .slide2 {
   background-image: image-url("slide1.png");
+  height: 500px;
+  width: 100%;
 }
 .slide3 {
   background-image: image-url("slide3.png");
+  height: 500px;
+  width: 100%;
 }
 .slide4 {
   background-image: image-url("slide4.png");
+  height: 500px;
+  width: 100%;
 }
 
-// .slide1 {
-//   background-image: image-url("slide2.png");
-// }
-// .slide2 {
-//   background-image: image-url("slide1.png");
-// }
-// .slide3 {
-//   background-image: image-url("slide3.png");
-// }
-// .slide4 {
-//   background-image: image-url("slide4.png");
-// }
-
-#container {
+#theTarget {
   height: 500px;
+  width: 100%;
 }
 
 .topics{
@@ -131,7 +127,7 @@ h6 span {
 .coffee:before {left: 20px;}
 .coffee:after {right: 20px;}
 .coffee p {
-    margin: 0; 
+    margin: 0;
     padding: 0;
 }
 
@@ -151,23 +147,4 @@ h6 span {
   opacity: 0.5;
 }
 
-#content{
-    position: relative;
-}
- 
-#topBtn {
-    /*-----必須-----*/
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-     
-    /*-----装飾-----*/
-    width: 64px;
-    height: 64px;
-    line-height: 64px;
-    text-align: center;
-    background-size: contain;
-    background-image: image-url("cat_photo.png");
-    background-size: 64px 64px;
-    color: #fff;
-}
+

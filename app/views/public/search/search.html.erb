@@ -25,7 +25,7 @@
         <h5 class="mt-3 mb-5 d-table" style="background-color: #e6e3de;">商品一覧</h5>
         <p class= mb-1>(全<%= @records.count %>件)</p>
         <div class="d-flex flex-wrap">
-          <%= render "piblic/products/products_index", products: @records %>
+          <%= render "public/products/products_index", products: @records %>
         </div>
       </div>
       <% if @records.count == 0 %>

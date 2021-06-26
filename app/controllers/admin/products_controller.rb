@@ -9,23 +9,21 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @genres = Genre.all
   end
 
   def create
-    product = Product.new(product_params)
-    if product.name.match(/[一-龠々]/)
-      product.conversion_name = product.name.to_kanhira.to_roman
+    @product = Product.new(product_params)
+    if @product.name.match(/[一-龠々]/)
+      @product.conversion_name = @product.name.to_kanhira.to_roman
     elsif product.name.is_hira? || product.name.is_kana?
-      product.conversion_name = product.name.to_roman
+      @product.conversion_name = @product.name.to_roman
     else
-      product.conversion_name = product.name
+      @product.conversion_name = @product.name
     end
-    if product.save
+    if @product.save
       redirect_to admin_product_path(product), notice: "商品を登録しました"
     else
-      @product = Product.new
-      render :new
+      render "new"
     end
   end
 
@@ -48,7 +46,7 @@ class Admin::ProductsController < ApplicationController
       product.conversion_name = product.name.to_roman
     else
       product.conversion_name = product.name
-    end    
+    end
     if product.update(product_params)
       redirect_to admin_product_path(product), notice: "商品情報を編集しました"
     else
