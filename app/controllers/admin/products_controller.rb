@@ -24,8 +24,7 @@ class Admin::ProductsController < ApplicationController
     if @product.save
       redirect_to admin_product_path(@product), notice: "商品を登録しました"
     else
-      flash.now[:alert] = '商品を登録できませんでした'
-      render :new
+      render "new"
     end
   end
 
@@ -51,7 +50,6 @@ class Admin::ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to admin_product_path(@product), notice: "商品情報を編集しました"
     else
-      flash.now[:alert] = '商品を登録できませんでした'
       render :edit
     end
   end
