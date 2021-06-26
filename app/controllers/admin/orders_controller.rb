@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin_admin!
 
   def index
-    @orders = Order.page(params[:page]).reverse_order
+    @orders = Order.page(params[:page]).per(8)
     @orders_all = Order.all.order('created_at ASC')
     order_sum = @orders_all.group("date(created_at)").sum(:total_price)
     @weights = order_sum.values

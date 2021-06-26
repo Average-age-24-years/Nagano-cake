@@ -1,7 +1,7 @@
 class Public::ProductsController < ApplicationController
 
   def index
-    @products = Product.page(params[:page]).per(4)
+    @products = Product.page(params[:page]).per(8)
     @active_products = Product.where(is_active: true)
   end
 
@@ -22,17 +22,19 @@ class Public::ProductsController < ApplicationController
     case selection
       when 'new'
         @selection = "新着順"
-        @products = @active_products.order(created_at: :DESC)
+        products = @active_products.order(created_at: :DESC)
       when 'low_price'
         @selection = "価格が低い順"
-        @products = @active_products.order(price: :ASC)
+        products = @active_products.order(price: :ASC)
       when 'likes'
         @selection = "人気順"
-        @products = Product.includes(:order_products).sort {|a,b|
+        products = Product.includes(:order_products).sort {|a,b|
         b.order_products.includes(:order_products).count <=>
         a.order_products.includes(:order_products).count
         }
     end
+
+    @products = Kaminari.paginate_array(products).page(params[:page]).per(5)
   end
 
 end
