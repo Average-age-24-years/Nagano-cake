@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      product: 商品
+    attributes:
+      product:
+        name: 商品名
+        image: 画像
+        introduction: 商品説明文
+        price: 税抜価格
+  
+
+    
+        
+        

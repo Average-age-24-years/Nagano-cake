@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    order             = Order.new
+    @order             = Order.new
     order.customer_id = @customer.id
     order.payment     = order_params[:payment]
     shipping          = order_params[:shipping].to_i
@@ -60,7 +60,7 @@ class Public::OrdersController < ApplicationController
     order.post_code   = order_params[:post_code]
     order.address     = order_params[:address]
     order.name        = order_params[:name]
-    if order.save && @customer.cart_products.each do |products|
+    if @order.save && @customer.cart_products.each do |products|
       order_product                = OrderProduct.new
       order_product.product_id     = products.product.id
       order_product.order_id       = order.id

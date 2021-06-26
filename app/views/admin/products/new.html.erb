@@ -5,6 +5,7 @@
       <h5 class="mt-3 mb-5 d-table" style="background-color: #e6e3de;">　商品新規登録　</h5>
       <div class="mx-auto d-table">
         <%= form_with model: [:admin, @product], local: true do |f| %>
+        <%= render 'layouts/errors_messages', model: f.object %>
           <div class="d-flex">
             <p style="width: 150px;">商品画像</p>
             <%= f.attachment_field :image, placeholder: "ファイルを選択" %>
