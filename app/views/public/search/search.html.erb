@@ -1,4 +1,3 @@
-
 <% if @model == 'genre' %>
  <%= render 'layouts/customer_search' %>
  <div class="container">
@@ -14,7 +13,7 @@
               <% end %>
               <div>商品名: <%= link_to "#{search.name}", public_product_path(search) %></div>
              <div>値段(税抜き): ¥<%= search.price.to_s(:delimited) %></div>
-            <div>ジャンル: <%= search.genre.name %></div>
+            <div>ジャンル: <%= search.name %></div>
                 </div>
         <% end %>
         <%= paginate @records %>
