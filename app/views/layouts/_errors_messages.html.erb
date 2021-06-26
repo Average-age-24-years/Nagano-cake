@@ -1,6 +1,10 @@
-<% if @customer.errors.any? %>
-  <%= @customer.errors.count %>件のエラーが発生しました
-  <% @customer.errors.full_messages.each do |message| %>
-    <%= message %>
+<% if model.errors.any? %>
+<div class="border border-danger mb-3">
+  <div class="bg-danger text-light pl-2"><%= model.errors.count %>件のエラーが発生しました</div>
+  <% model.errors.full_messages.each do |message| %>
+  <ul>
+    <li class="ml-4"><%= message %></li>
+  </ul>
   <% end %>
+</div>
 <% end %>

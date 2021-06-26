@@ -7,16 +7,21 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
-    genre = Genre.new(genre_params)
-    if genre.name.match(/[一-龠々]/)
-      genre.conversion_name = genre.name.to_kanhira.to_roman
-    elsif genre.name.is_hira? || genre.name.is_kana?
-      genre.conversion_name = genre.name.to_roman
+    @genre = Genre.new(genre_params)
+    if @genre.name.match(/[一-龠々]/)
+      @genre.conversion_name = @genre.name.to_kanhira.to_roman
+    elsif @genre.name.is_hira? || @genre.name.is_kana?
+      @genre.conversion_name = @genre.name.to_roman
     else
-      genre.conversion_name = genre.name
+      @genre.conversion_name = @genre.name
     end
-    genre.save
-    redirect_to admin_genres_path, notice: "ジャンルを登録しました"
+    if @genre.save
+      redirect_to admin_genres_path, notice: "ジャンルを登録しました"
+    else
+      @genres = Genre.all
+      flash.now[:alert] = 'ジャンルを登録できませんでした'
+      render :index
+    end
   end
 
   def edit
@@ -24,16 +29,20 @@ class Admin::GenresController < ApplicationController
   end
 
   def update
-    genre = Genre.find(params[:id])
-    if genre.name.match(/[一-龠々]/)
-      genre.conversion_name = genre.name.to_kanhira.to_roman
-    elsif genre.name.is_hira? || genre.name.is_kana?
-      genre.conversion_name = genre.name.to_roman
+    @genre = Genre.find(params[:id])
+    if @genre.name.match(/[一-龠々]/)
+      @genre.conversion_name = @genre.name.to_kanhira.to_roman
+    elsif @genre.name.is_hira? || @genre.name.is_kana?
+      @genre.conversion_name = @genre.name.to_roman
     else
-      genre.conversion_name = genre.name
+      @genre.conversion_name = @genre.name
     end    
-    genre.update(genre_params)
-    redirect_to admin_genres_path, notice: "ジャンルの変更を保存しました"
+    if @genre.update(genre_params)
+      redirect_to admin_genres_path, notice: "ジャンルの変更を保存しました"
+    else
+      flash.now[:alert] = "ジャンルを変更できませんでした"
+      render :edit
+    end
   end
 
   private

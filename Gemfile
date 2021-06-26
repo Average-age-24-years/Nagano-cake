@@ -80,3 +80,4 @@ group :production do
   gem 'mysql2'
 end
 gem 'miyabi'
+gem 'rails-i18n'

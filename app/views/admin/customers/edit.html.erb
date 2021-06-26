@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class='mt-5'><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h2>
-    <%= render 'layouts/errors_messages', customer: @customer %>
+    <%= render 'layouts/errors_messages', model: @customer %>
     <%= form_with model: @customer, url: admin_customer_path, local: true do |f| %>
 
         <div class="row mt-5">
