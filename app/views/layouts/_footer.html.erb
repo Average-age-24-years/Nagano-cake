@@ -1,7 +1,7 @@
 <footer>
   <div class='container mt-5'>
     <% unless request.path.include?("admin") %>
-      <h5 class="p-2 pl-4 border-bottom">お問い合わせ</h5>
+      <h5 class="p-2 pl-4 underbar">お問い合わせ</h5>
       <div class="d-flex">
         <p class="p-2 pl-4">
           ながのCake<br>
@@ -12,7 +12,9 @@
         <div class="col-3 text-right d-flex mt-auto pb-3">
           <h4 class="fab fa-facebook-square"></h4>
           <h4 class="fab fa-twitter-square mx-2"></h4>
-          <h4 class="fab fa-instagram-square"></h4>
+          <a href='https://www.instagram.com/p/CQiwKp_D5Na/?utm_medium=copy_link'>
+            <h4 class="fab fa-instagram-square"></h4>
+          </a>
         </div>
       </div>
    <% end %>
