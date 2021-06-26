@@ -14,11 +14,10 @@ class Public::SearchController < ApplicationController
            end
 		if @model == 'genre'
 			@records = Genre.search_for(record, @method).page(params[:page]).reverse_order
-      @records = Product.search_for(record, @method).page(params[:page]).reverse_order
+            @records = Product.search_for(record, @method).page(params[:page]).reverse_order
 			@active_products = Product.where(is_active: true)
 		else
 			@records = Product.search_for(record, @method).page(params[:page]).reverse_order
-			@active_products = Product.where(is_active: true)
 		end
 	end
 end
