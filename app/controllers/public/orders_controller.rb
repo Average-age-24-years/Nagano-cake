@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new
     @cart_products = current_customer.cart_products.all
-    @total_price    = subtotal_price
+    @total_price   = subtotal_price
     if order_params[:code].present? && current_customer.orders.count != 0
       redirect_to new_public_order_path, alert: "無効なクーポンです"
     elsif order_params[:code].present? && order_params[:code] != "202106"
@@ -41,6 +41,13 @@ class Public::OrdersController < ApplicationController
       @order.address   = @distination.address
       @order.name      = @distination.name
     elsif order_params[:radio] == "radio3"
+      if    order_params[:post_code] == ""
+        redirect_to new_public_order_path, alert: "郵便番号を入力してください"
+      elsif order_params[:address]   == ""
+        redirect_to new_public_order_path, alert: "住所を入力してください"
+      elsif order_params[:name]      == ""
+        redirect_to new_public_order_path, alert: "宛名を入力してください"
+      end 
       @order.post_code = order_params[:post_code]
       @order.address   = order_params[:address]
       @order.name      = order_params[:name]
