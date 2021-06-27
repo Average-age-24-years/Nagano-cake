@@ -1,14 +1,8 @@
 <div class="container my-5">
-  <% if @cart_product.errors.any? %>
-  <%= @cart_product.errors.count %>件のエラーが発生しました
-  <% @cart_product.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-  <% end %>
   <div class="row">
     <div class="col-md-8 offset-2 d-flex">
       <div class="mr-4">
-        <%= attachment_image_tag @product, :image, size: '250x180', format:'jpeg', fallback: 'sample.jpg' %>
+        <%= attachment_image_tag @product, :image, size: '250x180', format:'jpeg' %>
       </div>
       <div>
         <h5 class="font-weight-bold"><%= @product.name %></h5>
@@ -36,5 +30,6 @@
         <% end %>
       </div>
     </div>
+
   </div>
 </div>

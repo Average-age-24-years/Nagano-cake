@@ -40,7 +40,6 @@ class Customer < ApplicationRecord
   end
 
   def self.search_for(content, method)
-      
       Customer.where('last_name || first_name LIKE ?', '%'+content+'%')
   end
 

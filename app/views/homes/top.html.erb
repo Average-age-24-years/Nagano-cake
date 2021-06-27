@@ -1,18 +1,23 @@
-<div class='top-page'> 
+<div id="content" class="top">
+<div class='top-page'>
   <div class='header-bottom'></div>
-  <div id="container" class='mb-5'>
-    <div id="theTarget">
-      <div class="slide1"></div>
-      <div class="slide4"></div>
-      <div class="slide3"></div>
-      <div class="slide2"></div>
-    </div>
+  <div id="theTarget" class="mb-5">
+    <div class="slide1"></div>
+    <div class="slide4"></div>
+    <div class="slide3"></div>
+    <div class="slide2"></div>
   </div>
-  
+  <!--<div>-->
+  <!--  <div><%#= image_tag 'slide1.png' %></div>-->
+  <!--  <div><%#= image_tag 'slide2.png' %></div>-->
+  <!--  <div><%#= image_tag 'slide3.png' %></div>-->
+  <!--  <div><%#= image_tag 'slide4.png' %></div>-->
+  <!--</div>-->
+
   <div class='container mt-5 text-center'>
     <p class='mt-5 text-black-50 display-4 p-3'>NEWS & TOPICS</p>
     <div class='row pb-5 topics-text'>
-      
+
         <div class='col-4 p-5 topics' data-toggle="modal" data-target="#exampleModal1">
           <div class='topics-text text1 bg-white p-1'>
             <%= image_tag 'top1.jpeg', size: "300x600", class: 'img-fluid' %>
@@ -21,7 +26,7 @@
             <p>finger cake</p>
           </div>
         </div>
-        
+
         <div class="modal fade" id="exampleModal1" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -45,7 +50,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class='col-4 topics p-5' data-toggle="modal" data-target="#exampleModal2">
           <div class='topics-text text2 bg-white p-1'>
             <%= image_tag 'top4.jpeg', size: "300x600", class: 'img-fluid' %>
@@ -54,7 +59,7 @@
             <p>サマーギフトのご案内</p>
           </div>
         </div>
-        
+
         <div class="modal fade" id="exampleModal2" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -78,7 +83,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class='col-4 topics p-5' data-toggle="modal" data-target="#exampleModal3">
           <div class='topics-text text3 bg-white p-1'>
             <%= image_tag 'about1.jpeg', size: "300x600", class: 'img-fluid' %>
@@ -87,7 +92,7 @@
             <p>Berry whole cake</p>
           </div>
         </div>
-        
+
         <div class="modal fade" id="exampleModal3" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -113,7 +118,7 @@
         </div>
     </div>
     <a href='homes/about' class='link'>About</a>
-      
+
     <p class='mt-5 text-black-50 display-4 p-3'>COFFEE</p>
     <div class='col-12 coffee'>
       <%= image_tag 'top2.jpeg', size: "800x300", class: 'img-fluid p-5 rounded' %>
@@ -122,16 +127,16 @@
       <p class='mb-3 pb-3'>OPEN 11:00 〜 CLOSE 16:00</p>
     </div>
   </div>
-  
+
   <p class="mx-auto d-table mt-5 display-4 text-black-50">NEW PRODUCTS</p>
   <div class="row bg-gray" style="background-color: #ebe3d9;">
     <div class="col-10 offset-1">
-      <div class="d-flex">
+      <div class="d-flex flex-wrap">
         <% @products.each do |product| %>
-          <div class="mt-5 mr-5">
+          <div class="mt-5 mr-5 mx-auto">
             <div>
               <%= link_to public_product_path(product) do %>
-                <%= attachment_image_tag product, :image, size: '250x180', format:'jpeg', fallback: 'sample.jpg', class: "product_img" %>
+                <%= attachment_image_tag product, :image, size: '250x180', format:'jpeg', class: "product_img" %>
               <% end %>
             </div>
             <div class="px-2 py-3" style="background-color: #ffffff">
@@ -145,4 +150,5 @@
     </div>
   </div>
 </div>
-
+  <a href="#" id="topBtn" class="pr-2 pt-1">Top</a>
+</div>
