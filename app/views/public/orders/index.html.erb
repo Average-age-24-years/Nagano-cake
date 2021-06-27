@@ -1,39 +1,46 @@
 <div class="container">
   <div class="row">
-    <h5 class="mt-3 mb-5 d-table" style="background-color: #e6e3de;">　注文履歴一覧　</h5>
-      <table class="table table-bordered">
-        <thead class="thead-light">
-          <tr>
-            <th>注文日</th>
-            <th>配送先</th>
-            <th>注文商品</th>
-            <th>支払金額</th>
-            <th>ステータス</th>
-            <th>注文詳細</th>
-          </tr>
-        </thead>
-
-        <% @orders.each do |order| %>
-          <tbody>
+    <h5 class="my-5 d-table" style="background-color: #e6e3de;">　注文履歴一覧　</h5>
+    <div class="col-10 offset-1">
+      <% if @orders.present? %>
+        <table class="table table-bordered">
+          <thead class="thead-light">
             <tr>
-              <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-              <td>
-                〒<%= order.post_code %><br>
-                <%= order.address %><br>
-                <%= order.customer.last_name + order.customer.first_name %>
-              </td>
-              <td>
-                <% order.order_products.each do |order_product| %>
-                  <%= order_product.product.name %><br>
-                <% end %>
-              </td>
-              <td><%= order.total_price %></td>
-              <td><%= order.order_status %></td>
-              <td><%= link_to "表示する", public_order_path(order), class: "btn btn-sm btn-brown rounded-0" %></td>
+              <th>注文日</th>
+              <th>配送先</th>
+              <th>注文商品</th>
+              <th>支払金額</th>
+              <th>ステータス</th>
+              <th>注文詳細</th>
             </tr>
-          </tbody>
-        <% end %>
-      </table>
-    <%= paginate @orders %>
+          </thead>
+
+          <% @orders.each do |order| %>
+            <tbody>
+              <tr>
+                <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+                <td>
+                  〒<%= order.post_code %><br>
+                  <%= order.address %><br>
+                  <%= order.customer.last_name + order.customer.first_name %>
+                </td>
+                <td>
+                  <% order.order_products.each do |order_product| %>
+                    <%= order_product.product.name %><br>
+                  <% end %>
+                </td>
+                <td><%= order.total_price %></td>
+                <td><%= order.order_status %></td>
+                <td><%= link_to "表示する", public_order_path(order), class: "btn btn-sm btn-brown rounded-0" %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      <div class="mx-auto"><%= paginate @orders %></div>
+    </div>
+    <% else %>
+      <h3 class="d-table mx-auto">注文履歴がありません</h3>
+    <% end %>
   </div>
 </div>
+

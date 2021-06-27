@@ -32,7 +32,9 @@ Rails.application.routes.draw do
     }
     resources :products
     resources :genres,         only:[:index, :create, :edit, :update]
-    resources :customers,      only:[:index, :show, :edit, :update]
+    resources :customers,      only:[:index, :show, :edit, :update] do
+      get 'customer_orders' => 'orders#customer_order_index', as: 'orders'
+    end
     resources :orders,         only:[:index, :show, :update]
     resources :order_products, only: [:update]
   end
@@ -61,7 +63,7 @@ Rails.application.routes.draw do
     delete    'cart_products'                 => 'cart_products#all_destroy', as: 'all_destroy'
     get       'product_sort'                  => 'products#sort',             as: 'product_sort'
   end
-  
+
   if Rails.env.development?
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

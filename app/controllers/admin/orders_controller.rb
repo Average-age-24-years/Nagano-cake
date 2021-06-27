@@ -3,12 +3,19 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin_admin!
 
   def index
-    @orders = Order.page(params[:page]).reverse_order
+    @orders = Order.page(params[:page]).per(8)
     @orders_all = Order.all.order('created_at ASC')
     order_sum = @orders_all.group("date(created_at)").sum(:total_price)
     @weights = order_sum.values
     @dates = order_sum.keys
   end
+
+  def customer_order_index
+    @customer = Customer.find(params[:customer_id])
+    orders = @customer.orders
+    @orders = Kaminari.paginate_array(orders).page(params[:page]).per(8)
+  end
+
 
   def show
     @order = Order.find(params[:id])

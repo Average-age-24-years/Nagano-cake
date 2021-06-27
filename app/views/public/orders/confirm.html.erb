@@ -8,8 +8,8 @@
         <% @cart_products.each do |p| %>
           <tbody>
             <tr>
-              <td><%= attachment_image_tag p.product, :image, size: '50x50', format:'jpeg', fallback: 'sample.jpg' %><%= p.product.name %></td>
-              <td><%= p.product.price  %></td>
+              <td><%= attachment_image_tag p.product, :image, size: '50x50', format:'jpeg', fallback: 'sample.jpg' %>　　<%= p.product.name %></td>
+              <td><%= p.product.price %></td>
               <td><%= p.quantity  %></td>
               <td><%= (p.product.price * p.quantity * 1.1).round  %>
             </tr>
@@ -31,7 +31,7 @@
           </tbody>
     </table>
     <% if @shipping == 0 %>
-      <div class="text-nowrap">※初回購入限定「送料無料」クーポンを適用しています</div>
+      <div class="text-nowrap">※初回購入限定「送料無料クーポン」を適用しています</div>
     <% end %>
   </div>
 
@@ -39,7 +39,6 @@
   <div class='mt-2'><%= @order.payment %></div>
   <div class='mt-4 font-weight-bold'>お届け先</div>
   <div class='mt-2'><%= "〒#{@order.post_code}　#{@order.address}　#{@order.name}" %></div>
-  <%#= form_with model: @order, url: public_orders_confirm_path, method: :post, local: true do |f| %>
   <%= form_for @order, method: :post, url: public_orders_path do |f| %>
   <%= f.hidden_field :post_code %>
 	<%= f.hidden_field :address %>

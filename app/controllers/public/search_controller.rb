@@ -3,12 +3,15 @@ class Public::SearchController < ApplicationController
 		@model = params[:model]
 		@content = params[:content]
 		@method = params[:method]
-		if @model == 'genre'
-			@records = Product.search_for(@content, @method).page(params[:page]).reverse_order
-			@active_products = Product.where(is_active: true)
-		else
-			@records = Product.search_for(@content, @method).page(params[:page]).reverse_order
-			@active_products = Product.where(is_active: true)
-		end
+           unless @content.blank?
+           if @content.match(/[一-龠々]/)
+              record = @content.to_kanhira.to_roman
+           elsif @content.is_hira? || @content.is_kana?
+              record = @content.to_roman
+           else
+              record = @content
+           end
+           end
+			@records = Product.search_for(record, @method).page(params[:page]).reverse_order
 	end
 end

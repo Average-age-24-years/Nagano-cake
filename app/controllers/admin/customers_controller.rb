@@ -21,6 +21,7 @@ class Admin::CustomersController < ApplicationController
       flash[:notice] = "変更内容を保存しました"
       redirect_to admin_customer_path
     else
+      flash.now[:alert] = '変更内容を保存できませんでした'
       render "edit"
     end
   end

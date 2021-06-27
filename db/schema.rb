@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_21_053352) do
+ActiveRecord::Schema.define(version: 2021_06_25_115632) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2021_06_21_053352) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "conversion_name"
     t.index ["id"], name: "index_genres_on_id"
   end
 
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 2021_06_21_053352) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "conversion_name"
     t.index ["id"], name: "index_products_on_id"
   end
 
