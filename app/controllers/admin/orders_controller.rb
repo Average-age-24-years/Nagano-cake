@@ -10,6 +10,13 @@ class Admin::OrdersController < ApplicationController
     @dates = order_sum.keys
   end
 
+  def customer_order_index
+    @customer = Customer.find(params[:customer_id])
+    orders = @customer.orders
+    @orders = Kaminari.paginate_array(orders).page(params[:page]).per(8)
+  end
+
+
   def show
     @order = Order.find(params[:id])
   end
