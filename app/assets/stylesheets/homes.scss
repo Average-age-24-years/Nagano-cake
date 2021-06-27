@@ -83,6 +83,20 @@ header, h1 {
   position:relative;
 }
 
+.top-text1{
+  position: absolute;
+  top: 15%;
+  left: 30%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  opacity: 0.9;
+  color:#762f07 ;
+  font-family: 'cursive', serif;
+}
+
 h6 span {
   display: inline-block;
 }
