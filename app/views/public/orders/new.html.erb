@@ -15,7 +15,7 @@
       <%= f.radio_button :radio, :"radio2", class: "mr-2" %>登録済み住所から選択
     </label></br>
     <div class='select col-md-8'>
-      <%= f.collection_select(:id, @distinations, :id, :full_address) %>
+      <%= f.collection_select(:id, @distinations, :id, :full_address, {prompt: "選択してください"}, {class: "form-control"}) %>
     </div>
   </div>
 
