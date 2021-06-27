@@ -52,24 +52,24 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order             = Order.new
-    order.customer_id = @customer.id
-    order.payment     = order_params[:payment]
+    @order.customer_id = @customer.id
+    @order.payment     = order_params[:payment]
     shipping          = order_params[:shipping].to_i
-    order.shipping    = order_params[:shipping]
-    order.total_price = subtotal_price + shipping
-    order.post_code   = order_params[:post_code]
-    order.address     = order_params[:address]
-    order.name        = order_params[:name]
+    @order.shipping    = order_params[:shipping]
+    @order.total_price = subtotal_price + shipping
+    @order.post_code   = order_params[:post_code]
+    @order.address     = order_params[:address]
+    @order.name        = order_params[:name]
     if @order.save && @customer.cart_products.each do |products|
-      order_product                = OrderProduct.new
-      order_product.product_id     = products.product.id
-      order_product.order_id       = order.id
-      order_product.products_price = products.product.price
-      order_product.quantity       = products.quantity
-      order_product.save
+      @order_product                = OrderProduct.new
+      @order_product.product_id     = products.product.id
+      @order_product.order_id       = @order.id
+      @order_product.products_price = products.product.price
+      @order_product.quantity       = products.quantity
+      @order_product.save
     end
       @customer.cart_products.destroy_all
-      ThanksMailer.send_when_create_order(order, @customer).deliver
+      ThanksMailer.send_when_create_order(@order, @customer).deliver
       redirect_to public_orders_thanks_path
     else
       render :confirm
