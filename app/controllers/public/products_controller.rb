@@ -22,10 +22,10 @@ class Public::ProductsController < ApplicationController
     case selection
       when 'new'
         @selection = "新着順"
-        products = @active_products.order(created_at: :DESC)
+        products = active_products.order(created_at: :DESC)
       when 'low_price'
         @selection = "価格が低い順"
-        products = @active_products.order(price: :ASC)
+        products = active_products.order(price: :ASC)
       when 'likes'
         @selection = "人気順"
         products = Product.includes(:order_products).sort {|a,b|
