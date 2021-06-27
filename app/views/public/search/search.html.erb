@@ -1,22 +1,3 @@
-<% if @model == 'genre' %>
- <%= render 'layouts/customer_search' %>
- <div class="container">
-    <div class="row">
-      <div class="col-md-10 offset-md-1">
-        <h3 class="my-5">商品検索結果 "<%= @content %>"</h3>
-        <div class="d-flex flex-wrap">
-          <%= render "public/products/products_index", products: @records %>
-          <%= paginate @records %>
-        </div>
-        <% if @records.count == 0 %>
-          <div class="d-flex align-items-center justify-content-center" style="height:250px;">
-            <h4>該当する商品はありません</h4>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% elsif @model == 'product'%>
   <%= render 'layouts/customer_search' %>
   <div class="container">
     <div class="row">
@@ -36,4 +17,4 @@
     </div>
   </div>
 </div>
-<% end %>
+<%# end %>
